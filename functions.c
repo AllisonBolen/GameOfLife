@@ -27,7 +27,7 @@ int read_file( char* filename, char **buffer ){
     *buffer = malloc(sz * sizeof(char));
     rewind(in);
     fread(*buffer,sz,1,in);
-    printf("%d", (void *)*buffer);
+    printf("%p", (void *)*buffer);
 
     return 0;
   }
