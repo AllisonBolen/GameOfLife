@@ -28,7 +28,7 @@ int read_file( char* filename, char **buffer ){
     rewind(in);
     fread(*buffer,sz,1,in);
     printf("%p", (void *)*buffer);
-    
+
     return 0;
   }
 }
