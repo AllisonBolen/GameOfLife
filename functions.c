@@ -19,6 +19,10 @@ int read_file( char* filename, char **buffer ){
     *buffer = malloc(row * column * sizeof(char));
     printf("%d%d\n", row,column);
     
+    while ( ! feof(filename) ) {
+      fscanf (filename, "%d", &ch );
+      
+    }
 
     return 0;
   }
