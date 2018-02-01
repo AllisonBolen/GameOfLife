@@ -8,12 +8,12 @@ int main(int argc, int** argv[]){
   //buffer = malloc(500 * sizeof(char));
   read_file( argv[1], &buffer );
    
-  printf ("Would you like to save the file type Y for yes or N for no.");
+  printf ("\nWould you like to save the file type Y for yes or N for no.");
   //scanf ("%s", userprompt);
   //if (userprompt == "Y"){
  //   int write_file( char* filename, char *buffer, int size);
  // }
-  printf(" It didnt work");
+  printf("\n It didnt work");
 }
 
 

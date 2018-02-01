@@ -10,19 +10,24 @@ int read_file( char* filename, char **buffer ){
     exit(1);
   }
   else{
-    printf("Please enter the number of rows.\n");
-    int row;
-    scanf(" %d", &row);
-    printf("Please enter the number of columns.\n");
-    int column;
-    scanf(" %d", &column);
-    *buffer = malloc(row * column * sizeof(char));
-    printf("%d%d\n", row,column);
+   // printf("Please enter the number of rows.\n");
+   // int row;
+   // scanf(" %d", &row);
+
+   // printf("Please enter the number of columns.\n");
+   // int column;
+   // scanf(" %d", &column);
+
+   // *buffer = malloc(row * column * sizeof(char));
+   // printf("%d%d\n", row,column);
     
-    while ( ! feof(filename) ) {
-      fscanf (filename, "%d", &ch );
-      
-    }
+    int sz;
+    fseek(in,0L, SEEK_END);
+    sz=ftell(in);
+    *buffer = malloc(sz * sizeof(char));
+    rewind(in);
+    fread(*buffer,sz,1,in);
+    printf("%d", (void *)*buffer);
 
     return 0;
   }
