@@ -9,7 +9,7 @@ int main(int argc, int** argv[]){
   read_file( argv[1], &buffer );
   printf("%s", buffer);
 
-  printf ("\nWould you like to save the file type Y for yes or N for no.");
+  printf ("\nWould you like to save the file type Y for yes or N for no.\n");
   makeBoard();
   printf("\n It didnt work");
 }
