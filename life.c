@@ -12,6 +12,6 @@ int main(int argc, int** argv[]){
   int r = 4;
   int c = 4;
   printf ("\nWould you like to save the file type Y for yes or N for no.\n");
-  makeBoard(r, c, &board, &buffer);
+  makeBoard(r, c, &board, buffer);
   printf("\n It didnt work");
 }
