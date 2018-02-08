@@ -24,18 +24,18 @@ int write_file( char* filename, char *buffer, int size){
   FILE* out = fopen(filename, "w");
 }
 
-void makeBoard(int r, int c, char **board, char buffer){
+void makeBoard(int r, int c, char ***board, char buffer){
   int i, j;
     printf("buffer contents: %s\n", buffer);
-    printf("row: %d\n", row);
-    printf("column: %d\n", col);
-    **board = malloc(r * sizeof(char *));
+    printf("row: %d\n", r);
+    printf("column: %d\n", c);
+    *board = (char **) malloc(r * sizeof(char *));
     for (i=0; i<r; i++)
-         board[i] = malloc(c * sizeof(char));
-
+         (*board)[i] = (char *) malloc(c * sizeof(char));
+         // what? 
     for (i = 0; i <  r; i++)
       for (j = 0; j < c; j++)
-         board[i][j] = buffer[1];  // OR *(*(arr+i)+j) = ++count
+         board[i][j] = 'a';  // OR *(*(arr+i)+j) = ++count
 
     for (i = 0; i <  r; i++){
       for (j = 0; j < c; j++){

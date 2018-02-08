@@ -5,7 +5,7 @@
 int main(int argc, int** argv[]){
   printf("%s\n", argv[1]);
   char* buffer;
-  char* board;
+  char** board;
   //buffer = malloc(500 * sizeof(char));
   read_file( argv[1], &buffer );
   printf("%s", buffer);
