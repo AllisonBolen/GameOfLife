@@ -26,7 +26,7 @@ int write_file( char* filename, char *buffer, int size){
 
 void makeBoard(int* r, int* c, char **board, char **buffer){
   int i, j;
-
+    printf("buffer contents: %s\n", *buffer);
     **board = malloc(*r * sizeof(char *));
     for (i=0; i<*r; i++)
          board[i] = malloc(*c * sizeof(char));
@@ -34,7 +34,7 @@ void makeBoard(int* r, int* c, char **board, char **buffer){
     // Note that arr[i][j] is same as *(*(arr+i)+j)
     for (i = 0; i <  *r; i++)
       for (j = 0; j < *c; j++)
-         board[i][j] = buffer[i];  // OR *(*(arr+i)+j) = ++count
+         board[i][j] = *buffer;  // OR *(*(arr+i)+j) = ++count
 
     for (i = 0; i <  *r; i++){
       for (j = 0; j < *c; j++){
