@@ -33,7 +33,6 @@ void makeBoard(int r, int c, char **board, char buffer){
     for (i=0; i<r; i++)
          board[i] = malloc(c * sizeof(char));
 
-    // Note that arr[i][j] is same as *(*(arr+i)+j)
     for (i = 0; i <  r; i++)
       for (j = 0; j < c; j++)
          board[i][j] = buffer[1];  // OR *(*(arr+i)+j) = ++count
