@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 int read_file( char* filename, char **buffer ){
   FILE* in = fopen(filename, "r");
@@ -24,8 +26,19 @@ int write_file( char* filename, char *buffer, int size){
   FILE* out = fopen(filename, "w");
 }
 
-void makeBoard(int r, int c, char ***board, char buffer){
+void makeBoard(int r, int c, char ***board, char *buffer){
   int i, j;
+
+  for (i = 0; i < strlen(buffer); i++){
+    if(buffer[i] == '\n'){
+    }
+    else{
+      printf("A: %c, ", buffer[i]);
+    }               
+	printf("\n");
+  }
+
+
     //allocate space for the rows of the array to hold an array
     *board = (char **) malloc(r * sizeof(char *));
     for (i=0; i<r; i++)
@@ -34,7 +47,9 @@ void makeBoard(int r, int c, char ***board, char buffer){
          // what? 
     for (i = 0; i <  r; i++)
       for (j = 0; j < c; j++)
-         (*board)[i][j] = 'a';  // OR *(*(arr+i)+j) = ++count
+         if(buffer[i] != '\n'){
+         (*board)[i][j] = buffer[i];  
+         }
 
     for (i = 0; i <  r; i++){
       for (j = 0; j < c; j++){
