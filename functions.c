@@ -24,43 +24,22 @@ int write_file( char* filename, char *buffer, int size){
   FILE* out = fopen(filename, "w");
 }
 
-void makeBoard(int* r, int* c, char **board, char **buffer){
+void makeBoard(int r, int c, char ***board, char buffer){
   int i, j;
+    //allocate space for the rows of the array to hold an array
+    *board = (char **) malloc(r * sizeof(char *));
+    for (i=0; i<r; i++)
+         // allocate space for the array 
+         (*board)[i] = (char *) malloc(c * sizeof(char));
+         // what? 
+    for (i = 0; i <  r; i++)
+      for (j = 0; j < c; j++)
+         (*board)[i][j] = 'a';  // OR *(*(arr+i)+j) = ++count
 
-    **board = malloc(*r * sizeof(char *));
-    for (i=0; i<*r; i++)
-         board[i] = malloc(*c * sizeof(char));
-
-    // Note that arr[i][j] is same as *(*(arr+i)+j)
-    for (i = 0; i <  *r; i++)
-      for (j = 0; j < *c; j++)
-         board[i][j] = buffer[i];  // OR *(*(arr+i)+j) = ++count
-
-    for (i = 0; i <  *r; i++){
-      for (j = 0; j < *c; j++){
-         printf("%d ", board[i][j]);
+    for (i = 0; i <  r; i++){
+      for (j = 0; j < c; j++){
+         printf("%c ", (*board)[i][j]);
       }
 	printf("\n");
    }
 }
-
-// int r = 5;
-// int c = 4;
-// char **arr = (int **)malloc(r*sizeof(char *));
-//
-// for(i=0; i < r; i++){
-//     arr[i]=(int *) malloc(c * sizeof(char *));
-// }
-//
-// for(i = 0; i < r; i++){
-//     for(j = 0; j < c; j++){
-//         fread(arr[i][j], sz, 1, in);
-//     }
-// }
-//
-// for(i = 0; i < r; i++){
-//     for(j = 0; j < c; j++){
-//         printf("%s", arr[i][j]);
-//     }
-//    printf("\n");
-// }
