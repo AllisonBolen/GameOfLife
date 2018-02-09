@@ -8,5 +8,5 @@ void boardDimensions(int *r, int *c);
 void userResponse(char *resp);
 void getFileFromUser(char *fileName);
 void getContNumFromUser(int *num); 
-void freeMem(char ***board, char **buffer);
+void freeMem(char ***board, char **buffer, int *r, int *c);
 #endif

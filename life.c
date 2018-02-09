@@ -16,6 +16,7 @@ int main(int argc, int** argv[]){
 
   userResponse(&response); 
   printf("\nResponse: %c\n",response);
+  freeMem(&board,&buffer,&r,&c);
   //while(response != 113){
     //  calc board?
     // after each check ask user what they want

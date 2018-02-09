@@ -72,3 +72,14 @@ void userResponse(char *resp){
   printf("\nYour response: ");
   scanf("\n%c",resp);
 }
+
+void freeMem(char ***board, char **buffer, int *r, int *c){
+  int i;
+  //free columns
+  for(i = 0; i < *r; i++){
+    free((*board)[i]);
+  }
+ // free whole thing
+ free((*board));
+
+}
