@@ -3,42 +3,51 @@
 
 int main(int argc, int** argv[]){
   printf("%s\n", argv[1]);
-  char* response;
+  char response;
   char* buffer;
+  char* fileName;
   char** board;
   int size = read_file( argv[1], &buffer );
   printf("%s", buffer);
   int *r, *c;
   boardDimensions(&r,&c);
   makeBoard(&r,&c, &board, buffer);
-  //return 0;
 
-
-  userResponse(&response); 
+  userResponse(&response);
   printf("\nResponse: %c\n",response);
-  //while(response != 113){
-    //  calc board?
-    // after each check ask user what they want
+  char userArray = response;
 
-    // if resp = s
-    // write to file
-    // ask again?
+  printf("\nuserArray: %c\n", userArray);
+  
+  while(userArray != 'q'){
+    if(userArray == 'l'){
+      getFileFromUser(&fileName);
+      // free all boards and buffers
+    //  freeMem(&board, &buffer, &r, &c);
+      // read from filename
+      // ask for loop nums?
+    }
+    
+    if(userArray == 's'){
+      // write to file
+    }
 
-    // if resp load
-    // free all boards and buffers
-    // read from filename
-    // ask for loop nums?
+    if(userArray == 'c'){
+      // run once for a new single generation
+    }
 
-    // if resp = c
-    // run once for a new single generation
-    // ask for what to do next
- 
-    // if reps = cn
-    // loop for that many generations
-    // ask user what to do next
- // }
-    // if resp = q
+    if(userArray == 'n'){
+      // loop for that many generations
+    }
+    userResponse(&response);
+    userArray = response;
+  }
+
+  if(userArray == 'q'){
     // free baords and buffers
+    freeMem(&board, &buffer, &r, &c);
     // system exit with  0
+    return 0;
+  }
   return 0;
 }

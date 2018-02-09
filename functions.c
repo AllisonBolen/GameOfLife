@@ -70,5 +70,21 @@ void userResponse(char *resp){
   printf("\nContinue Multiple: n\n");
   printf("\nQuit: q\n");
   printf("\nYour response: ");
-  scanf("\n%c",resp);
+  scanf("\n%s",resp);
+}
+
+void getFileFromUser(char *fileName){
+  printf("\nWhat file would you like to read from:\n");
+  printf("\nFile: ");
+  scanf("\n%s", fileName);
+}
+
+void freeMem(char ***board, char **buffer, int *r, int *c){
+  int i;
+  //free columns
+  for(i = 0; i < *r; i++){
+    free((*board)[i]);
+  }
+  //free whole thing
+  free((*board));
 }
