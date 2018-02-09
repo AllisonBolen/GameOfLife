@@ -26,16 +26,16 @@ int write_file( char* filename, char *buffer, int size){
   FILE* out = fopen(filename, "w");
 }
 
-void makeBoard(int r, int c, char ***board, char *buffer){
+void makeBoard(int *r, int *c, char ***board, char *buffer){
   int i, j, count;
     //allocate space for the rows of the array to hold an array
-    *board = (char **) malloc(r * sizeof(char *));
-    for (i=0; i<r; i++)
+    *board = (char **) malloc(*r * sizeof(char *));
+    for (i=0; i<*r; i++)
          // allocate space for the array 
-         (*board)[i] = (char *) malloc(c * sizeof(char));
+         (*board)[i] = (char *) malloc(*c * sizeof(char));
     count = 0; 
-    for (i = 0; i < r; i++){
-      for (j = 0; j <= c; j++){
+    for (i = 0; i < *r; i++){
+      for (j = 0; j <= *c; j++){
          if(buffer[count] != 10){ // comparing ascii value of new lines to whats in our buffer
            (*board)[i][j] = buffer[count];  
            count++;
@@ -45,10 +45,18 @@ void makeBoard(int r, int c, char ***board, char *buffer){
          }
        }
      }
-    for (i = 0; i <  r; i++){
-      for (j = 0; j < c; j++){
+    for (i = 0; i < *r; i++){
+      for (j = 0; j < *c; j++){
          printf("%c ", (*board)[i][j]);
       }
 	printf("\n");
    }
 }
+
+void loop(int *r, int *c){
+  printf ("\nHow many rows do you have?\n");
+  scanf("\n%d",r);
+  printf("\nHow many columns do you have?\n");
+  scanf("\n%d",c);
+  printf("\nMakeBoard:\n");
+  }
