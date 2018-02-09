@@ -27,8 +27,7 @@ int write_file( char* filename, char *buffer, int size){
 }
 
 void makeBoard(int r, int c, char ***board, char *buffer){
-  int i, j;
-
+  int i, j, count;
   for (i = 0; i < strlen(buffer); i++){
     if(buffer[i] == '\n'){
     }
@@ -38,19 +37,24 @@ void makeBoard(int r, int c, char ***board, char *buffer){
 	printf("\n");
   }
 
-
     //allocate space for the rows of the array to hold an array
     *board = (char **) malloc(r * sizeof(char *));
     for (i=0; i<r; i++)
          // allocate space for the array 
          (*board)[i] = (char *) malloc(c * sizeof(char));
-         // what? 
-    for (i = 0; i <  r; i++)
-      for (j = 0; j < c; j++)
-         if(buffer[i] != '\n'){
-         (*board)[i][j] = buffer[i];  
+    count = 0; 
+    for (i = 0; i < r; i++){
+      for (j = 0; j < c; j++){
+         if(buffer[count] != 10){
+           printf("B: %c\n", buffer[count]);
+           (*board)[i][j] = buffer[count];  
+           count++;
+          }
+        else{ 
+          count = count + 2;
          }
-
+       }
+     }
     for (i = 0; i <  r; i++){
       for (j = 0; j < c; j++){
          printf("%c ", (*board)[i][j]);
