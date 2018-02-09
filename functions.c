@@ -28,15 +28,6 @@ int write_file( char* filename, char *buffer, int size){
 
 void makeBoard(int r, int c, char ***board, char *buffer){
   int i, j, count;
-  for (i = 0; i < strlen(buffer); i++){
-    if(buffer[i] == '\n'){
-    }
-    else{
-      printf("A: %c, ", buffer[i]);
-    }               
-	printf("\n");
-  }
-
     //allocate space for the rows of the array to hold an array
     *board = (char **) malloc(r * sizeof(char *));
     for (i=0; i<r; i++)
@@ -44,14 +35,13 @@ void makeBoard(int r, int c, char ***board, char *buffer){
          (*board)[i] = (char *) malloc(c * sizeof(char));
     count = 0; 
     for (i = 0; i < r; i++){
-      for (j = 0; j < c; j++){
-         if(buffer[count] != 10){
-           printf("B: %c\n", buffer[count]);
+      for (j = 0; j <= c; j++){
+         if(buffer[count] != 10){ // comparing ascii value of new lines to whats in our buffer
            (*board)[i][j] = buffer[count];  
            count++;
           }
         else{ 
-          count = count + 2;
+          count++;
          }
        }
      }
