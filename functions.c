@@ -29,7 +29,7 @@ int write_file( char* filename, char *buffer, int size){
 
 void makeBoard(int *r, int *c, char ***board, char *buffer){
   int i, j, count;
-    //allocate space for the rows of the array to hold an array 
+    // allocate space for the rows of the array to hold an array 
     *board = (char **) malloc(*r * sizeof(char *));
     for (i=0; i<*r; i++)
          // allocate space for the array 

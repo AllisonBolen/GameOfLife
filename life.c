@@ -17,7 +17,7 @@ int main(int argc, int** argv[]){
 
 
   while(response != 'q'){
-    // calc board?
+    //  calc board?
     // after each check ask user what they want
 
     // if resp = s
