@@ -61,3 +61,14 @@ void boardDimensions(int *r, int *c){
   scanf("\n%d",c);
   printf("\nMakeBoard:\n");
   }
+
+void userResponse(char *resp){
+  printf("\nWhat would you like to do next?\n");
+  printf("\nSave: s\n");
+  printf("\nLoad: l\n");
+  printf("\nContinue Once: c\n");
+  printf("\nContinue Multiple: n\n");
+  printf("\nQuit: q\n");
+  printf("\nYour response: ");
+  scanf("\n%c",resp);
+}

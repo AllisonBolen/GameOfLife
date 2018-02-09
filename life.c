@@ -3,7 +3,7 @@
 
 int main(int argc, int** argv[]){
   printf("%s\n", argv[1]);
-  char response;
+  char* response;
   char* buffer;
   char** board;
   int size = read_file( argv[1], &buffer );
@@ -11,12 +11,12 @@ int main(int argc, int** argv[]){
   int *r, *c;
   boardDimensions(&r,&c);
   makeBoard(&r,&c, &board, buffer);
-  return 0;
+  //return 0;
 
 
-
-
-  while(response != 'q'){
+  userResponse(&response); 
+  printf("\nResponse: %c\n",response);
+  //while(response != 113){
     //  calc board?
     // after each check ask user what they want
 
@@ -36,8 +36,9 @@ int main(int argc, int** argv[]){
     // if reps = cn
     // loop for that many generations
     // ask user what to do next
-  }
+ // }
     // if resp = q
     // free baords and buffers
     // system exit with  0
+  return 0;
 }
