@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include "functions.h"
 
 int read_file( char* filename, char **buffer ){
   FILE* in = fopen(filename, "r");
@@ -53,7 +54,7 @@ void makeBoard(int *r, int *c, char ***board, char *buffer){
    }
 }
 
-void loop(int *r, int *c){
+void boardDimensions(int *r, int *c){
   printf ("\nHow many rows do you have?\n");
   scanf("\n%d",r);
   printf("\nHow many columns do you have?\n");
