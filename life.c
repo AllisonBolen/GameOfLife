@@ -38,5 +38,5 @@ int main(int argc, int** argv[]){
   }
     // if resp = q
     // free baords and buffers
-    // system exit with 0
+    // system exit with  0
 }
