@@ -25,6 +25,7 @@ int read_file( char* filename, char **buffer ){
 
 int write_file( char* filename, char *buffer, int size){
   FILE* out = fopen(filename, "w");
+
 }
 
 void makeBoard(int *r, int *c, char ***board, char *buffer){
@@ -77,6 +78,13 @@ void getFileFromUser(char *fileName){
   printf("\nWhat file would you like to read from:\n");
   printf("\nFile: ");
   scanf("\n%s", fileName);
+}
+
+void saveFileTo(char *fileName){
+  printf("\nWhat file would you like to save to:\n");
+  printf("\nFile: ");
+  scanf("\n%s", fileName);
+
 }
 
 void freeMem(char ***board, char **buffer, int *r, int *c){

@@ -22,6 +22,7 @@ int main(int argc, int** argv[]){
   while(userArray != 'q'){
     if(userArray == 'l'){
       getFileFromUser(&fileName);
+
       // free all boards and buffers
     //  freeMem(&board, &buffer, &r, &c);
       // read from filename
@@ -30,6 +31,12 @@ int main(int argc, int** argv[]){
     
     if(userArray == 's'){
       // write to file
+      int row, col;
+      saveFileTo(&fileName);
+      boardDimensions(&row,&col);
+      int size = (row *col);
+      printf("\nsize %d", size);
+      write_file(&fileName, &buffer, size);
     }
 
     if(userArray == 'c'){
