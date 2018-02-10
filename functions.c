@@ -32,7 +32,7 @@ int write_file( char* filename, char *buffer, int size){
   int j;
   char temparray[size];
   printf("Buffer:\n%s\n", buffer);
-  for(i=0; i<=size+1; i++){
+  for(i=0; i<size+cols; i++){
     printf("buffer at i: %c\n",buffer[i]);
     temparray[i] = buffer[i];
     if(j==cols){
@@ -42,7 +42,7 @@ int write_file( char* filename, char *buffer, int size){
     fprintf(out, "%c",temparray[i]);
     j++;
   }
-  printf("File has been saved successfully would you like to do anything else?");
+  printf("File has been saved successfully would you like to do anything else?\n");
 }
 
 void makeBoard(int *r, int *c, char ***board, char *buffer){
