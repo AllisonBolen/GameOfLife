@@ -25,7 +25,22 @@ int read_file( char* filename, char **buffer ){
 
 int write_file( char* filename, char *buffer, int size){
   FILE* out = fopen(filename, "w");
-
+  int cols;
+  printf("\nHow many columns do you have?\n");
+  scanf("\n%d",&cols);
+  int i; 
+  int j = 0;
+  char temparray[size];
+  for(i=0; i<size; i++){
+    temparray[i] = buffer[i];
+    if(j==cols){
+      fprintf(out, "%c\n",temparray[i]);
+      j = 0;
+    }
+    fprintf(out, "%c",temparray[i]);
+    j++;
+  }
+  printf("File has been saved successfully would you like to do anything else?");
 }
 
 void makeBoard(int *r, int *c, char ***board, char *buffer){

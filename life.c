@@ -36,7 +36,7 @@ int main(int argc, int** argv[]){
       boardDimensions(&row,&col);
       int size = (row *col);
       printf("\nsize %d", size);
-      write_file(&fileName, &buffer, size);
+      write_file(&fileName, buffer, size);
     }
 
     if(userArray == 'c'){
