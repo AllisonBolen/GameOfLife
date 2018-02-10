@@ -29,13 +29,15 @@ int write_file( char* filename, char *buffer, int size){
   printf("\nHow many columns do you have?\n");
   scanf("\n%d",&cols);
   int i; 
-  int j = 0;
+  int j;
   char temparray[size];
-  for(i=0; i<size; i++){
+  printf("Buffer:\n%s\n", buffer);
+  for(i=0; i<=size+1; i++){
+    printf("buffer at i: %c\n",buffer[i]);
     temparray[i] = buffer[i];
     if(j==cols){
-      fprintf(out, "%c\n",temparray[i]);
-      j = 0;
+     fprintf(out, "%c", temparray[i]);
+     j = 0;
     }
     fprintf(out, "%c",temparray[i]);
     j++;

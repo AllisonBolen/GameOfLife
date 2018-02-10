@@ -7,6 +7,7 @@ int main(int argc, int** argv[]){
   char* buffer;
   char* fileName;
   char** board;
+  char* saveFileName;
   int size = read_file( argv[1], &buffer );
   printf("%s", buffer);
   int *r, *c;
@@ -18,10 +19,10 @@ int main(int argc, int** argv[]){
   char userArray = response;
 
   printf("\nuserArray: %c\n", userArray);
-  
+
   while(userArray != 'q'){
     if(userArray == 'l'){
-      getFileFromUser(&fileName);
+      getFileFromUser(&saveFileName);
 
       // free all boards and buffers
     //  freeMem(&board, &buffer, &r, &c);
@@ -32,11 +33,12 @@ int main(int argc, int** argv[]){
     if(userArray == 's'){
       // write to file
       int row, col;
-      saveFileTo(&fileName);
+      saveFileTo(&saveFileName);
       boardDimensions(&row,&col);
       int size = (row *col);
       printf("\nsize %d", size);
-      write_file(&fileName, buffer, size);
+      printf("\nbuffer before save:\n%s",buffer);
+      write_file(&saveFileName, buffer, size);
     }
 
     if(userArray == 'c'){
