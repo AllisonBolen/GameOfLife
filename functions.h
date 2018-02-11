@@ -10,4 +10,7 @@ void getFileFromUser(char *fileName);
 void getContNumFromUser(int *num); 
 void saveFileTo(char *fileName);
 void freeMem(char ***board, char **buffer, int *r, int *c);
+void printBoard(char ***board, int *r, int *c);
+void printBuffer(char *board);
+void populateBoard(char ***board, char *buffer, int *r, int *c);
 #endif

@@ -9,10 +9,17 @@ int main(int argc, int** argv[]){
   char** board;
   char* saveFileName;
   int size = read_file( argv[1], &buffer );
-  printf("%s", buffer);
   int *r, *c;
+  char** checkBoard; 
+  char**  newBoard;
+  
+  
+
+  printBuffer(buffer, &r, &c); 
   boardDimensions(&r,&c);
   makeBoard(&r,&c, &board, buffer);
+  populateBoard(&board, buffer, &r, &c);
+  printBoard(&board, &r, &c);
 
   userResponse(&response);
   printf("\nResponse: %c\n",response);
@@ -37,7 +44,8 @@ int main(int argc, int** argv[]){
       boardDimensions(&row,&col);
       int size = (row *col);
       printf("\nsize %d", size);
-      printf("\nbuffer before save:\n%s",buffer);
+      printf("\nbuffer before save:\n");
+      printBuffer(buffer, &row, &col);
       write_file(&saveFileName, buffer, size);
     }
 
@@ -54,7 +62,7 @@ int main(int argc, int** argv[]){
 
   if(userArray == 'q'){
     // free baords and buffers
-    freeMem(&board, &buffer, &r, &c);
+    //freeMem(&board, &buffer, &r, &c);
     // system exit with  0
     return 0;
   }

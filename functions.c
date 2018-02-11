@@ -47,29 +47,47 @@ int write_file( char* filename, char *buffer, int size){
 
 void makeBoard(int *r, int *c, char ***board, char *buffer){
   int i, j, count;
-    // allocate space for the rows of the array to hold an array 
-    *board = (char **) malloc(*r * sizeof(char *));
-    for (i=0; i<*r; i++)
-         // allocate space for the array 
-         (*board)[i] = (char *) malloc(*c * sizeof(char));
-    count = 0; 
-    for (i = 0; i < *r; i++){
-      for (j = 0; j <= *c; j++){
-         if(buffer[count] != 10){ // comparing ascii value of new lines to whats in our buffer
-           (*board)[i][j] = buffer[count];  
-           count++;
-          }
-        else{ 
-          count++;
-         }
-       }
-     }
-    for (i = 0; i < *r; i++){
-      for (j = 0; j < *c; j++){
-         printf("%c ", (*board)[i][j]);
+  // allocate space for the rows of the array to hold an array 
+  *board = (char **) malloc(*r * sizeof(char *));
+    
+  for(i=0; i<*r; i++)
+    // allocate space for the array 
+    (*board)[i] = (char *) malloc(*c * sizeof(char)); 
+}
+
+void printBoard(char ***board, int *r, int *c){
+  int i, j;
+  printf("The board contains: \n");
+  for (i = 0; i < *r; i++){
+    for (j = 0; j < *c; j++){
+      printf("%c ", (*board)[i][j]);
+    }
+      printf("\n");
+  }
+}
+
+void printBuffer(char *buffer){
+  int i, j;
+  printf("The buffer contains: \n");
+  for (i = 0; i < strlen(buffer); i++){
+      printf("%c ", buffer[i]);
+    }
+}
+
+void populateBoard(char ***board, char *buffer,  int *r, int *c){
+  int i, j, count;
+  count = 0;
+  for (i = 0; i < *r; i++){
+    for (j = 0; j <= *c; j++){
+      if(buffer[count] != 10){ // comparing ascii value of new lines to whats in our buffer
+        (*board)[i][j] = buffer[count];
+        count++;
       }
-	printf("\n");
-   }
+      else{
+        count++;
+      }
+    }
+  }
 }
 
 void boardDimensions(int *r, int *c){
@@ -78,7 +96,7 @@ void boardDimensions(int *r, int *c){
   printf("\nHow many columns do you have?\n");
   scanf("\n%d",c);
   printf("\nMakeBoard:\n");
-  }
+}
 
 void userResponse(char *resp){
   printf("\nWhat would you like to do next?\n");
@@ -101,15 +119,18 @@ void saveFileTo(char *fileName){
   printf("\nWhat file would you like to save to:\n");
   printf("\nFile: ");
   scanf("\n%s", fileName);
-
 }
 
-void freeMem(char ***board, char **buffer, int *r, int *c){
-  int i;
+// https://stackoverflow.com/questions/1824363/dynamic-allocation-deallocation-of-2d-3d-arrays
+void freeMem(char*** board, char **buffer, int *r, int *c){
+  int i, j;
   //free columns
   for(i = 0; i < *r; i++){
-    free((*board)[i]);
+    for(j = 0; j < *c; j++){
+      free(board[i][j]);
+    }
+    free(board[i]);
   }
   //free whole thing
-  free((*board));
+  free(board);
 }
