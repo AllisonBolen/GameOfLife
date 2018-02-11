@@ -88,6 +88,14 @@ void makeBoard(int *r, int *c, char ***board, char *buffer){
  
 }
 
+void makeCheck(int *r, int *c, int ***checkBoard){
+  int i, j, count;
+  // allocate space for the rows of the array to hold an array
+  *checkBoard = (int **) malloc(*r * sizeof(int *));
+  for (i=0; i<*r; i++)
+    // allocate space for the array
+    (*checkBoard)[i] = (int *) malloc(*c * sizeof(int));
+}
 
 /* * * * * * * * * * * * 
  * print the board
@@ -104,6 +112,17 @@ void printBoard(char ***board, int *r, int *c){
   for (i = 0; i < *r; i++){
     for (j = 0; j < *c; j++){
       printf("%c", (*board)[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+void printCheckBoard(int ***board, int *r, int *c){
+  int i, j;
+  printf("The check board contains:\n");
+  for (i = 0; i < *r; i++){
+    for (j = 0; j < *c; j++){
+      printf("%d", (*board)[i][j]);
     }
     printf("\n");
   }
@@ -154,6 +173,14 @@ void populateBoard(char ***board, char *buffer,  int *r, int *c){
   }
 }
 
+void populateCheck(int *r, int *c, int ***checkBoard){
+int i, j, count;
+  for (i = 0; i < *r; i++){
+    for (j = 0; j <= *c; j++){
+      (*checkBoard)[i][j] = 0;
+    }
+  }  
+}
 
 /* * * * * * * * * * * * 
  * user input for board size 
@@ -290,8 +317,158 @@ void freeMem(char ***board, char **buffer, int *r, int *c){
 */
 
 
-void OverCrowding(char board, char ***checkboard, int r, int c){
-    
+void OverCrowding(char board, char ***checkboard, int i, int j, int r, int c){
+  // top left corner
+  if( i == 0 && j == 0 ){
+    // move right
+    if( board[i][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+    // check down
+    if(board[i+1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }  
+    // check diagonal down and to teh right
+    if(board[i+1][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+  }
+  // bottom left corner
+  else if(i == c && j == 0 ){
+    //check up 
+    if(board[i-1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+    // check right
+    if(board[i][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+    // check diagnaol up and to the right
+    if(board[i-1][j+1] == '1'){
+    }
+  } 
+  // top right corner
+  else if(i==0 && j == c){
+    // check left
+    if(board[i][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+    // check down
+    if(board[i-1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+    // check diagnal left down
+    if(board[i+1][j-1] == '1' ){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+  } 
+  // bottom right corner
+  else if(i == r && j == c){
+    // check up
+    if(board[i-1][j] == '1){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;    
+   }
+   // check left 
+   if(board[i][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check diagnal up and to the left 
+   if(board[i-1][j-1] == '1'){
+     (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+   }
+  }
+  // check top row
+  else if(i == 0 && j > -1 && j < c){
+    // check left
+    if(board[i][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+    // check right
+    if( board[i][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+    // check down
+    if( board[i+1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    } 
+    // check diagnaol left down
+    if( board[i+1][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    } 
+    // check diaginal right down
+    if( board[i+1][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+  }
+ // check bottom row 
+ else if(i == r && j >-1 && j < c){
+   // chekc up
+   if(board[i+1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    } 
+   // check left
+   if(board[i][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check right 
+   if(board[i][j+i] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check diag up left
+   if(board[i+1][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check diag up right
+   if(board[i+1][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+ }
+ // check left col
+ else if(i > -1 && i < r && j == 0){
+   // check up 
+   if(board[i-1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+   }
+   // check down
+   if(board[i+1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+   }
+   // check right
+   if(board[i][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+   }
+   // check diag down right
+   if(board[i+1][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+   }
+   // check diag up right 
+   if(board[i-1][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+   }
+ }
+ else if(i > -1 && i < r && j == c){
+   // check left
+   if(board[i][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check up
+   if(board[i-1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check down
+   if(board[i+1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    } 
+   // check diag up left
+   if(board[i-1][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check diag down left
+   if(board[i+1][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+ }
+ printf("made the check table");   
 }
 
 void underPopulation(){
