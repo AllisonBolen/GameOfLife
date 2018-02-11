@@ -317,7 +317,7 @@ void freeMem(char ***board, char **buffer, int *r, int *c){
 */
 
 
-void OverCrowding(char board, char ***checkboard, int i, int j, int r, int c){
+void OverCrowding(char ***board, char ***checkboard, int i, int j, int r, int c){
   // top left corner
   if( i == 0 && j == 0 ){
     // move right
@@ -366,7 +366,7 @@ void OverCrowding(char board, char ***checkboard, int i, int j, int r, int c){
   // bottom right corner
   else if(i == r && j == c){
     // check up
-    if((*board)[i-1][j] == '1){
+    if((*board)[i-1][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;    
    }
    // check left 
