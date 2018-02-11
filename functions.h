@@ -17,7 +17,7 @@ void printCheckBoard(int ***board, int *r, int *c);
 void printBuffer(char *board);
 void populateCheck(int *r, int *c, int ***checkBoard);
 void populateBoard(char ***board, char *buffer, int *r, int *c);
-void overCrowding( char board, int ***checkBoard, int i, int j , int r, int c);
+void overCrowding( char ***board, int ***checkBoard, int i, int j , int r, int c);
 void underPopulation();
 void survival();
 void zombie();

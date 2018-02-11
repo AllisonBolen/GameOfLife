@@ -317,7 +317,7 @@ void freeMem(char ***board, char **buffer, int *r, int *c){
 */
 
 
-void OverCrowding(char ***board, char ***checkboard, int i, int j, int r, int c){
+void OverCrowding(char ***board, char ***checkBoard, int i, int j, int r, int c){
   // top left corner
   if( i == 0 && j == 0 ){
     // move right
@@ -424,7 +424,7 @@ void OverCrowding(char ***board, char ***checkboard, int i, int j, int r, int c)
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
  }
- // check left col
+ // check leftmost col
  else if(i > -1 && i < r && j == 0){
    // check up 
    if((*board)[i-1][j] == '1'){
@@ -447,6 +447,7 @@ void OverCrowding(char ***board, char ***checkboard, int i, int j, int r, int c)
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
    }
  }
+ // check rightmost  row
  else if(i > -1 && i < r && j == c){
    // check left
    if((*board)[i][j-1] == '1'){
@@ -469,6 +470,18 @@ void OverCrowding(char ***board, char ***checkboard, int i, int j, int r, int c)
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
  }
+ // check middle for all
+ else {
+   // check up
+   // check down
+   // check left
+   // check right
+   // check diag up left
+   // check diag down left 
+   // check diag up right 
+   // check diag down right 
+ }
+ 
  printf("made the check table");   
 }
 
