@@ -72,6 +72,7 @@ int write_file( char* filename, char *buffer, int size){
  *   board - the 2d array to store teh chars in
  * return:
  *   nothing
+ * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
  * * * * * * * * * * * */
 void makeBoard(int *r, int *c, char ***board, char *buffer){
   int i, j, count;
@@ -83,15 +84,15 @@ void makeBoard(int *r, int *c, char ***board, char *buffer){
     (*board)[i] = (char *) malloc(*c * sizeof(char)); 
 }
 
-/* * * * * * * * * * * *
- *  * read file
- *   * params:
- *    *   filename - name of file to read from
- *     *   buffer - id arrray to read contents into
- *      * return:
- *       *   the size of the file read in, warning: includes the '\n' line bytes
- *        * * * * * * * * * * * */
-
+/* * * * * * * * * * * * 
+ * print the board
+ * params: 
+ *   board - contents of game
+ *   r - num of rows
+ *   c - num of cols
+ * return: 
+ *   nothing 
+ * * * * * * * * * * * */
 void printBoard(char ***board, int *r, int *c){
   int i, j;
   printf("The board contains: \n");
@@ -103,6 +104,15 @@ void printBoard(char ***board, int *r, int *c){
   }
 }
 
+/* * * * * * * * * * * * 
+ * print the buffer
+ * params: 
+ *   buffer - contents of the buffer
+ *   r - num of rows
+ *   c - num of cols
+ * return: 
+ *   nothing 
+ * * * * * * * * * * * */
 void printBuffer(char *buffer){
   int i, j;
   printf("The buffer contains: \n");
@@ -111,6 +121,16 @@ void printBuffer(char *buffer){
     }
 }
 
+/* * * * * * * * * * * * 
+ * populate the board
+ * params: 
+ *   board - contents of game
+ *   r - num of rows
+ *   c - num of cols
+ *   buffer - the contents read from the file 
+ * return: 
+ *   nothing 
+ * * * * * * * * * * * */
 void populateBoard(char ***board, char *buffer,  int *r, int *c){
   int i, j, count;
   count = 0;
@@ -127,6 +147,14 @@ void populateBoard(char ***board, char *buffer,  int *r, int *c){
   }
 }
 
+/* * * * * * * * * * * * 
+ * user input for board size 
+ * params: 
+ *   r - num of rows
+ *   c - num of cols
+ * return: 
+ *   nothing 
+ * * * * * * * * * * * */
 void boardDimensions(int *r, int *c){
   printf ("\nHow many rows do you have?\n");
   scanf("\n%d",r);
@@ -135,6 +163,13 @@ void boardDimensions(int *r, int *c){
   printf("\nMakeBoard:\n");
 }
 
+/* * * * * * * * * * * * 
+ * user input continuing the game or not 
+ * params: 
+ *   resp - user response
+ * return: 
+ *   nothing 
+ * * * * * * * * * * * */
 void userResponse(char *resp){
   printf("\nWhat would you like to do next?\n");
   printf("\nSave: s\n");
@@ -146,19 +181,40 @@ void userResponse(char *resp){
   scanf("\n%s",resp);
 }
 
+/* * * * * * * * * * * * 
+ * user input for filename
+ * params: 
+ *   filename - user entered filename
+ * return: 
+ *   nothing 
+ * * * * * * * * * * * */
 void getFileFromUser(char *fileName){
   printf("\nWhat file would you like to read from:\n");
   printf("\nFile: ");
   scanf("\n%s", fileName);
 }
 
+/* * * * * * * * * * * * 
+ * user input for saving to a file 
+ * params: 
+ *   resp - user response
+ * return: 
+ *   nothing 
+ * * * * * * * * * * * */
 void saveFileTo(char *fileName){
   printf("\nWhat file would you like to save to:\n");
   printf("\nFile: ");
   scanf("\n%s", fileName);
 }
 
-// https://stackoverflow.com/questions/1824363/dynamic-allocation-deallocation-of-2d-3d-arrays
+/* * * * * * * * * * * * 
+ * free mem
+ * params: 
+ *   resp - user response
+ * return: 
+ *   nothing 
+ * source: https://stackoverflow.com/questions/1824363/dynamic-allocation-deallocation-of-2d-3d-arrays
+ * * * * * * * * * * */
 void freeMem(char*** board, char **buffer, int *r, int *c){
   int i, j;
   //free columns
