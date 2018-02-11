@@ -123,7 +123,7 @@ void printBuffer(char *buffer){
   int i, j;
   printf("The buffer contains: \n");
   for (i = 0; i < strlen(buffer); i++){
-    printf("%c ", buffer[i]);
+    printf("%c", buffer[i]);
   }
 }
 
@@ -228,8 +228,33 @@ void saveFileTo(char *fileName){
  *   nothing 
  * source: https://stackoverflow.com/questions/1824363/dynamic-allocation-deallocation-of-2d-3d-arrays
  * * * * * * * * * * * */
-void freeMem(char*** board, char **buffer, int *r, int *c){
-    int i, j;
+//void freeMem(char*** board, char **buffer, int *r, int *c){
+void freeMem(char ***board, int *r, int *c) {
+   int i, j;
+   printf("\n*r: %d\n", *r);
+   printf("\n*c: %d\n", *c);
+   printf("The board contains:\n");
+  // for(i = *r; i > -1; i--){
+   // for(j=*c; j > -1; j--){      
+    for (i = 0; i < *r; i++){
+//       for (j = 0; j < *c; j++){
+	   printf("1st free:\n");
+	   printf("%s\n", (*board)[i]);
+	   free((*board)[i]);
+	  // printf("After free:\n");
+	  // printf("%c\n", (*board)[i]);
+//	 }
+//	printf("%c
+	//printf("2nd free:\n");
+//	free(board[i]);
+      }
+      printf("final free:\n");
+      free(**board);
+
+}
+/*      
+  
+  int i, j;
     //free columns
     printf("\n*r: %d\n", *r);
    // printf("\nr: %d\n", r);
@@ -250,7 +275,7 @@ void freeMem(char*** board, char **buffer, int *r, int *c){
     //free whole thing
     free(board);
 }
-
+*/
 /*
 void freeMem(char ***board, char **buffer, int *r, int *c){
   int i;
@@ -265,7 +290,7 @@ void freeMem(char ***board, char **buffer, int *r, int *c){
 */
 
 
-void OverCrowding(char board, char ***checkboard, int i, int j, int r, int c){
+void OverCrowding(char board, char ***checkboard, int r, int c){
     
 }
 

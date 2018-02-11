@@ -1,4 +1,3 @@
 all:
 	gcc *.c -o game
-	./game inputLarge.txt
-	
+	./game inputtest.txt

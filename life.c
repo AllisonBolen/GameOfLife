@@ -70,7 +70,12 @@ int main(int argc, int** argv[]){
     free(buffer);
     printf("\nbuffer after free:\n%s",buffer);
     
-    printf("\nboard before free:\n%s",(*board));
+  //  printf("\nboard before free:\n%s",(*board));
+    printBoard(&board, &r, &c);
+    freeMem(&board, &r, &c);
+    printf("\nboard after free:\n");
+    printBoard(&board, &r, &c);
+
    // printf("\nr :%d",r);
 
 /*
