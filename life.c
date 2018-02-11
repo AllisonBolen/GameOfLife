@@ -9,10 +9,21 @@ int main(int argc, int** argv[]){
   char** board;
   char* saveFileName;
   int size = read_file( argv[1], &buffer );
-  printf("%s", buffer);
+ // printf("%s", buffer);
   int *r, *c;
+  char** checkBoard;
+  char** newBoard;
+
+  printBuffer(buffer, &r, &c); 
   boardDimensions(&r,&c);
   makeBoard(&r,&c, &board, buffer);
+  // allocate stuff for the check boards
+  makeBoard(&r, &c, &checkBoard);
+  makeBoard(&r, &c, &newBoard);
+
+
+  populateBoard(&board, buffer, &r, &c);
+  printBoard(&board, &r, &c);
 
   userResponse(&response);
   printf("\nResponse: %c\n",response);
@@ -38,6 +49,7 @@ int main(int argc, int** argv[]){
       int size = (row *col);
       printf("\nsize %d", size);
       printf("\nbuffer before save:\n%s",buffer);
+      printBuffer(buffer, &row, &col);
       write_file(&saveFileName, buffer, size);
     }
 
@@ -53,8 +65,31 @@ int main(int argc, int** argv[]){
   }
 
   if(userArray == 'q'){
+    int m, n;
+    printf("\nbuffer before free:\n%s",buffer);
+    free(buffer);
+    printf("\nbuffer after free:\n%s",buffer);
+    
+    printf("\nboard before free:\n%s",(*board));
+   // printf("\nr :%d",r);
+
+/*
+    for(n = 0; n <(int)*r; n++){
+      for(m = 0; m <(int)*c; m++){
+        printf("\nboard: %d\n", board[n][m]);
+       // free(board[n][m]);
+      }
+     // free(board[n]);
+    }
+ */      //free whole thing
+       //    free(board);
+       //
+    // free(buffer);
+    //printf("\nboard after free:\n%s",(*board)[1]);
+
+
     // free baords and buffers
-    freeMem(&board, &buffer, &r, &c);
+ //  freeMem(&*board, &buffer, &r, &c);
     // system exit with  0
     return 0;
   }
