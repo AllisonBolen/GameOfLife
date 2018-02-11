@@ -321,150 +321,151 @@ void OverCrowding(char board, char ***checkboard, int i, int j, int r, int c){
   // top left corner
   if( i == 0 && j == 0 ){
     // move right
-    if( board[i][j+1] == '1'){
+    if( (*board)[i][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
     // check down
-    if(board[i+1][j] == '1'){
+    if((*board)[i+1][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }  
     // check diagonal down and to teh right
-    if(board[i+1][j+1] == '1'){
+    if((*board)[i+1][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
   }
   // bottom left corner
   else if(i == c && j == 0 ){
     //check up 
-    if(board[i-1][j] == '1'){
+    if((*board)[i-1][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
     // check right
-    if(board[i][j+1] == '1'){
+    if((*board)[i][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
     // check diagnaol up and to the right
-    if(board[i-1][j+1] == '1'){
+    if((*board)[i-1][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
   } 
   // top right corner
   else if(i==0 && j == c){
     // check left
-    if(board[i][j-1] == '1'){
+    if((*board)[i][j-1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
     // check down
-    if(board[i-1][j] == '1'){
+    if((*board)[i-1][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
     // check diagnal left down
-    if(board[i+1][j-1] == '1' ){
+    if((*board)[i+1][j-1] == '1' ){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
   } 
   // bottom right corner
   else if(i == r && j == c){
     // check up
-    if(board[i-1][j] == '1){
+    if((*board)[i-1][j] == '1){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;    
    }
    // check left 
-   if(board[i][j-1] == '1'){
+   if((*board)[i][j-1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
    // check diagnal up and to the left 
-   if(board[i-1][j-1] == '1'){
+   if((*board)[i-1][j-1] == '1'){
      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
    }
   }
   // check top row
   else if(i == 0 && j > -1 && j < c){
     // check left
-    if(board[i][j-1] == '1'){
+    if((*board)[i][j-1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
     // check right
-    if( board[i][j+1] == '1'){
+    if( (*board)[i][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
     // check down
-    if( board[i+1][j] == '1'){
+    if( (*board)[i][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     } 
     // check diagnaol left down
-    if( board[i+1][j-1] == '1'){
+    if( (*board)[i+1][j-1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     } 
     // check diaginal right down
-    if( board[i+1][j+1] == '1'){
+    if( (*board)[i+1][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
   }
  // check bottom row 
  else if(i == r && j >-1 && j < c){
    // chekc up
-   if(board[i+1][j] == '1'){
+   if((*board)[i+1][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     } 
    // check left
-   if(board[i][j-1] == '1'){
+   if((*board)[i][j-1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
    // check right 
-   if(board[i][j+i] == '1'){
+   if((*board)[i][j+i] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
    // check diag up left
-   if(board[i+1][j-1] == '1'){
+   if((*board)[i+1][j-1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
    // check diag up right
-   if(board[i+1][j+1] == '1'){
+   if((*board)[i+1][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
  }
  // check left col
  else if(i > -1 && i < r && j == 0){
    // check up 
-   if(board[i-1][j] == '1'){
+   if((*board)[i-1][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
    }
    // check down
-   if(board[i+1][j] == '1'){
+   if((*board)[i+1][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
    }
    // check right
-   if(board[i][j+1] == '1'){
+   if((*board)[i][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
    }
    // check diag down right
-   if(board[i+1][j+1] == '1'){
+   if((*board)[i+1][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
    }
    // check diag up right 
-   if(board[i-1][j+1] == '1'){
+   if((*board)[i-1][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
    }
  }
  else if(i > -1 && i < r && j == c){
    // check left
-   if(board[i][j-1] == '1'){
+   if((*board)[i][j-1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
    // check up
-   if(board[i-1][j] == '1'){
+   if((*board)[i-1][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
    // check down
-   if(board[i+1][j] == '1'){
+   if((*board)[i+1][j] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     } 
    // check diag up left
-   if(board[i-1][j-1] == '1'){
+   if((*board)[i-1][j-1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
    // check diag down left
-   if(board[i+1][j-1] == '1'){
+   if((*board)[i+1][j-1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
     }
  }
