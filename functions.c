@@ -265,8 +265,14 @@ void freeMem(char ***board, char **buffer, int *r, int *c){
 */
 
 
-void OverCrowding(char board, char ***checkboard, int i, int j, int r, int c){
-    
+void OverCrowding(char board, int ***checkboard, int i, int j, int r, int c){
+   //top left  corrner
+   if(i == 0 && j == 0){
+     //check right
+     if(board[i][j+1] == '1'){
+       (*checkBoard)[i][j]==
+     }
+   }
 }
 
 void underPopulation(){

@@ -11,14 +11,14 @@ int main(int argc, int** argv[]){
   int size = read_file( argv[1], &buffer );
  // printf("%s", buffer);
   int *r, *c;
-  char** checkBoard;
+  int** checkBoard;
   char** newBoard;
 
   printBuffer(buffer, &r, &c); 
   boardDimensions(&r,&c);
   makeBoard(&r,&c, &board, buffer);
   // allocate stuff for the check boards
-  makeBoard(&r, &c, &checkBoard);
+  makeCheckBoard(&r, &c, &checkBoard);
   makeBoard(&r, &c, &newBoard);
 
 
