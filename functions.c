@@ -4,6 +4,15 @@
 #include <ctype.h>
 #include "functions.h"
 
+
+/* * * * * * * * * * * * 
+ * read file
+ * params: 
+ *   filename - name of file to read from
+ *   buffer - id arrray to read contents into
+ * return: 
+ *   the size of the file read in, warning: includes the '\n' line bytes 
+ * * * * * * * * * * * */
 int read_file( char* filename, char **buffer ){
   FILE* in = fopen(filename, "r");
 
@@ -23,6 +32,15 @@ int read_file( char* filename, char **buffer ){
   }
 }
 
+/* * * * * * * * * * * *
+ * write file
+ * params:
+ *   filename - name of file to read from
+ *   buffer - id arrray to read contents into
+ *   size -  the size to loop to for the file to be read completely
+ * return:
+ *   an int but why?
+ * * * * * * * * * * * * */
 int write_file( char* filename, char *buffer, int size){
   FILE* out = fopen(filename, "w");
   int cols;
@@ -45,6 +63,16 @@ int write_file( char* filename, char *buffer, int size){
   printf("File has been saved successfully would you like to do anything else?\n");
 }
 
+/* * * * * * * * * * * *
+ * allocate the board space
+ * params:
+ *   c - number of cols
+ *   r - number of rows
+ *   buffer - id arrray to read contents into
+ *   board - the 2d array to store teh chars in
+ * return:
+ *   nothing
+ * * * * * * * * * * * */
 void makeBoard(int *r, int *c, char ***board, char *buffer){
   int i, j, count;
   // allocate space for the rows of the array to hold an array 
@@ -54,6 +82,15 @@ void makeBoard(int *r, int *c, char ***board, char *buffer){
     // allocate space for the array 
     (*board)[i] = (char *) malloc(*c * sizeof(char)); 
 }
+
+/* * * * * * * * * * * *
+ *  * read file
+ *   * params:
+ *    *   filename - name of file to read from
+ *     *   buffer - id arrray to read contents into
+ *      * return:
+ *       *   the size of the file read in, warning: includes the '\n' line bytes
+ *        * * * * * * * * * * * */
 
 void printBoard(char ***board, int *r, int *c){
   int i, j;
