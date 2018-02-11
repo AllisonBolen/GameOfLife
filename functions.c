@@ -472,14 +472,38 @@ void OverCrowding(char ***board, char ***checkBoard, int i, int j, int r, int c)
  }
  // check middle for all
  else {
-   // check up
-   // check down
    // check left
+   if((*board)[i][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check up
+   if((*board)[i-1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check down
+   if((*board)[i+1][j] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    } 
    // check right
+   if((*board)[i][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+   }
    // check diag up left
-   // check diag down left 
+   if((*board)[i-1][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check diag down left
+   if((*board)[i+1][j-1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    }
+   // check diag down right
+   if((*board)[i+1][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+   }
    // check diag up right 
-   // check diag down right 
+   if((*board)[i-1][j+1] == '1'){
+      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+   }
  }
  
  printf("made the check table");   
