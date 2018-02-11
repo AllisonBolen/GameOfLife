@@ -13,4 +13,8 @@ void freeMem(char ***board, char **buffer, int *r, int *c);
 void printBoard(char ***board, int *r, int *c);
 void printBuffer(char *board);
 void populateBoard(char ***board, char *buffer, int *r, int *c);
+void overCrowding();
+void underPopulation();
+void survival();
+void zombie();
 #endif

@@ -227,3 +227,19 @@ void freeMem(char*** board, char **buffer, int *r, int *c){
   //free whole thing
   free(board);
 }
+
+void OverCrowding(char board, char ***checkboard, int i, int j, int r, int c){
+  
+}
+
+void underPopulation(){
+
+}
+
+void survival(){
+
+}
+
+void zombie(){
+
+}

@@ -18,9 +18,10 @@ int main(int argc, int** argv[]){
   printBuffer(buffer, &r, &c); 
   boardDimensions(&r,&c);
   makeBoard(&r,&c, &board, buffer);
-  // allocate the space for the new board and check board. 
+  // allocate stuff for the check boards
   makeBoard(&r, &c, &checkboard);
   makeBoard(&r, &c, &newBoard);
+
 
   populateBoard(&board, buffer, &r, &c);
   printBoard(&board, &r, &c);
