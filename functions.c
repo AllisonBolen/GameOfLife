@@ -47,8 +47,8 @@ int write_file( char* filename, char *buffer, int size){
   int cols,rows;
   printf("\nHow many rows do you have?\n");
   scanf("\n%d",&rows);
- // printf("\nHow many columns do you have?\n");
- // scanf("\n%d",&cols);
+  printf("\nHow many columns do you have?\n");
+  scanf("\n%d",&cols);
   int i; 
   int j;
   char temparray[size];
@@ -56,12 +56,12 @@ int write_file( char* filename, char *buffer, int size){
   for(i=0; i<size+rows; i++){
     printf("buffer at i: %c\n",buffer[i]);
     temparray[i] = buffer[i];
-//    if(j==cols){
-  //   fprintf(out, "%c", temparray[i]);
-   //  j = 0;
-   // }
+    if(j==cols){
+    fprintf(out, "%c", temparray[i]);
+    j = 0;
+    }
     fprintf(out, "%c",temparray[i]);
-   // j++;
+    j++;
   }
   printf("File has been saved successfully would you like to do anything else?\n");
 }

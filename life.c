@@ -33,7 +33,18 @@ int main(int argc, int** argv[]){
 
   while(userArray != 'q'){
     if(userArray == 'l'){
-      getFileFromUser(&saveFileName);
+     // free(buffer);
+    //  freeMem(&board, &r, &c);
+     // char fName[100] = "";
+     // getFileFromUser(&fName);
+     // argv[1] = saveFileName;
+     // read_file(&fName, &buffer);
+     // size = read_file(&fName, &buffer);
+     // printBuffer(buffer, &r, &c);
+     // boardDimensions(&r, &c);
+     // makeBoard(&r,&c, &board, buffer);
+     // populateBoard(&board, buffer, &r, &c);
+     // printBoard(&board, &r, &c);
 
       // free all boards and buffers
     //  freeMem(&board, &buffer, &r, &c);
@@ -44,17 +55,23 @@ int main(int argc, int** argv[]){
     if(userArray == 's'){
       // write to file
       int row, col;
+     // saveFileTo(&fileName);
       saveFileTo(&saveFileName);
       boardDimensions(&row,&col);
       int size = (row *col);
       printf("\nsize %d", size);
       printf("\nbuffer before save:\n%s",buffer);
       printBuffer(buffer, &row, &col);
-      write_file(&saveFileName, buffer, size);
+     // write_file(&fileName, buffer, size);
+       write_file(&saveFileName, buffer, size);
+     // userResponse(&response);
+     // userArray = response;
     }
 
     if(userArray == 'c'){
       // run once for a new single generation
+     // userResponse(&response);
+     // userArray = response;
     }
 
     if(userArray == 'n'){
@@ -98,5 +115,10 @@ int main(int argc, int** argv[]){
     // system exit with  0
     return 0;
   }
+ //  userResponse(&response);
+ //  userArray = response;
+
+//}
+
   return 0;
 }
