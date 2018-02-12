@@ -27,7 +27,13 @@ int read_file( char* filename, char **buffer ){
     sz=ftell(in);
     *buffer = malloc(sz * sizeof(char));
     rewind(in);
+   // char fName[1000] = "";
+   // fName = *buffer;
+   // strcpy(fName, *buffer);
+   // free(*buffer);
+   // printf("fName: %s\n",fName);
     fread(*buffer,sz,1,in);
+  //  fread(*buffer,sz,1,in);
     return sz;
   }
 }
@@ -82,10 +88,18 @@ void makeBoard(int *r, int *c, char ***board, char *buffer){
   int i, j, count;
     // allocate space for the rows of the array to hold an array 
     *board = (char **) malloc(*r * sizeof(char *));
-    for (i=0; i<*r; i++)
+    //char fBoard[1000] = "";
+   // char fBoArr[1000] = "";
+   // strcpy(fBoard, *board);
+   // free(*board);
+    for (i=0; i<*r; i++){
          // allocate space for the array 
          (*board)[i] = (char *) malloc(*c * sizeof(char));
- 
+//	 strcpy(fBoArr,((*board)[i]));
+//	 fBoard[i] = fBoArr;
+//	 free((*board)[i]);
+    }
+  //  free(*board);
 }
 
 void makeCheck(int *r, int *c, int ***checkBoard){
