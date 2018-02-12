@@ -313,27 +313,47 @@ void freeMem(char ***board, char **buffer, int *r, int *c){
   //free whole thing
   free((*board));
 }
-
 */
 
 
-void OverCrowding(char ***board, char ***checkBoard, int i, int j, int r, int c){
+void overCrowding(char ***board, int  ***checkBoard, int i, int j, int r, int c){
+  i = 0;
+  j =0;
+  printf("herehereherehere");  
+  printf("\n top corner %c, %d", board[i][j],(*checkBoard)[i][j]);
+  printf("\n i: %d \n", i );
+  printf("\n j: %d \n", j );
+  printf("\n r: %d \n", r );
+  printf("\n c: %d \n", c );
+  
+  //printf("\n top corner %c", (*board)[i][j] );
   // top left corner
   if( i == 0 && j == 0 ){
-    // move right
-    if( (*board)[i][j+1] == '1'){
-      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    // move right 
+    printf("this is a place");
+    int thing =  board[i][j+1];
+    if( thing  == '1'){
+      printf("cold");   
+      int stuff = (*checkBoard)[i][j] + 1;
+      printf("this: %d", stuff); 
+      //(*checkBoard)[i][j] = stuff;
+      printf("\n check right");   
     }
     // check down
-    if((*board)[i+1][j] == '1'){
-      (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+    thing = (int)board[i+1][j];
+    if(thing == '1'){
+      printf("HOT");
+      int stuff = (*checkBoard[i][j]);
+      (*checkBoard)[i][j] = stuff;
+      printf("\n check down" );
     }  
     // check diagonal down and to teh right
     if((*board)[i+1][j+1] == '1'){
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
+      printf("\n check diagonal");
     }
   }
-  // bottom left corner
+  /*// bottom left corner
   else if(i == c && j == 0 ){
     //check up 
     if((*board)[i-1][j] == '1'){
@@ -505,8 +525,9 @@ void OverCrowding(char ***board, char ***checkBoard, int i, int j, int r, int c)
       (*checkBoard)[i][j] = (*checkBoard)[i][j] + 1;
    }
  }
- 
- printf("made the check table");   
+ */
+ printf("made the check table"); 
+return 0;  
 }
 
 void underPopulation(){

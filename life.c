@@ -58,6 +58,20 @@ int main(int argc, int** argv[]){
 
     if(userArray == 'c'){
       // run once for a new single generation
+      int i, j, rowNum, colNum;
+      boardDimensions(&rowNum, &colNum);
+      printf("C 1 gen one\n");
+      printCheckBoard(&checkBoard, &r, &c); 
+      printBoard(&board, &r, &c);
+      printf("\nrow: %d\n",rowNum);
+      printf("\ncol: %d\n", colNum);
+      //for(i = 0 ; i <  rowNum; i++){
+        //for(j = 0; j < colNum; j++){
+         printf("this is where i am");
+         overCrowding(&buffer, &checkBoard, 0, 0, rowNum, colNum);
+        //}
+      //}
+     printCheckBoard(&checkBoard, &r, &c);
     }
 
     if(userArray == 'n'){
