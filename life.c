@@ -96,8 +96,8 @@ int main(int argc, int** argv[]){
     else if(userArray == 'c'){
       // run once for a new single generation
       int row, col;
-      boardDimensions(&row,&col); 
-      getNeighbors(&buffer, &checkBoard, 0,0,row,col);
+    //  boardDimensions(&row,&col); 
+      getNeighbors(&buffer, &checkBoard, 0,0,r,c);
     }
 
     else if(userArray == 'n'){

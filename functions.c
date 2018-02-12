@@ -342,29 +342,34 @@ void getNeighbors(char ***board, int ***checkBoard, int i, int j , int r, int c)
     for(m = j-1; m <= j+1; m++){
       printf("\nm = %d",m); 
      //if(n > -1 &&  m > -1 && n < r && m < c){
-       if(n>-1){
-         printf("\n HERE ONE");
-         if(m> -1){ 
-           printf("\n HERE TWO");
-           if(n < r){
-             printf("\n HERE THREE");
-            if(m < c){
-               printf("\n HERE FOUR");  
-               printf("\nbefore ---- board[%d][%d] = %c", n, m, board[n][m]);
-               printf("\nbefore ---- board[1][0] = %c", board[1][0]); 
-               int thing = (int) board[n][m];
-               if(thing  == 49){ 
+      if(n>-1 && m>-1){
+       //if(n>-1){
+         printf("\n Greater then -1");
+        // if(m> -1){ 
+          // printf("\n HERE TWO");
+	   if(n<r && m<c){
+          // if(n < r){
+             printf("\n Less than row and col");
+           // if(m < c){
+             //  printf("\n HERE FOUR");  
+               printf("\nn: %d\n",n);
+	       printf("\nm: %d\n",m);
+	       printf("\nbefore ---- board[%d][%d] = \n%s", n, m, (board)[n]);
+               printf("\nbefore ---- board[%d][%d] = %c", n, m, (*board)[n][m]); 
+              // printf("Board: %c", *(*(*board+n)+m));
+	       int thing = board[n][m];
+               if(thing  == '1'){ 
                  printf("HERE FIVE");
                  //checkBoard[j][i] = (*checkBoard)[i][j] + 1;
                  printf("checkboard[%d][%d] = %d",i,j, (*checkBoard)[i][j]);
         }
       //}
-      }
-      }
+      //}
+       }
       }
      }
     }
-  }
+ // }
 }
 
 void OverCrowding(){ 
