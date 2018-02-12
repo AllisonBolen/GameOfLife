@@ -4,8 +4,6 @@
 #include <ctype.h>
 #include "functions.h"
 
-
-
 /* * * * * * * * * * * * 
  *  * read file
  *   * params: 
@@ -30,7 +28,7 @@ int read_file( char* filename, char **buffer ){
     fread(*buffer,sz,1,in);
     return sz;
    }
-  return 0; 
+ // return 0; 
  }
 
 /* * * * * * * * * * * *
@@ -50,3 +48,37 @@ int write_file( char* filename, char *buffer, int size){
 }
 
 
+/* * * * * * * * * * * *
+ * allocate the board space
+ *  * params:
+ *   *   c - number of cols
+ *    *   r - number of rows
+ *     *   buffer - id arrray to read contents into
+ *      *   board - the 2d array to store teh chars in
+ *       * return:
+ *        *   nothing
+ *         * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
+ *          * * * * * * * * * * * * */
+void makeBoard(int r, int c, int **board){
+  int i, j, count;
+  **board = (int **) malloc(r * sizeof(int *));
+  for (i=0; i<r; i++){
+    board[i] = (int *) malloc(c * sizeof(int));
+  }
+} 
+
+/* * * * * * * * * * * * 
+ *  * user input for board size 
+ *   * params: 
+ *    *   r - num of rows
+ *     *   c - num of cols
+ *      * return: 
+ *       *   nothing 
+ *        * * * * * * * * * * * * */
+void boardDimensions(int *r, int *c){
+  printf ("\nHow many rows do you have?\n");
+  scanf("\n%d",r);
+  printf("\nHow many columns do you have?\n");
+  scanf("\n%d",c);
+  printf("\nMakeBoard:\n");
+}
