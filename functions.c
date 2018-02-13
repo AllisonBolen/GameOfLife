@@ -26,6 +26,7 @@ int read_file( char* filename, char **buffer ){
     *buffer = malloc(sz * sizeof(char));
     rewind(in);
     fread(*buffer,sz,1,in);
+    fclose(in);
     return sz;
    }
  // return 0; 
@@ -59,11 +60,11 @@ int write_file( char* filename, char *buffer, int size){
  *        *   nothing
  *         * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
  *          * * * * * * * * * * * * */
-void makeBoard(int r, int c, int **board){
+void makeBoard(int row, int col, int ***board){
   int i, j, count;
-  *board = (int *) malloc(r * sizeof(int *));
-  for (i=0; i<r; i++){
-    board[i] = (int *) malloc(c * sizeof(int));
+  *board = (int *) malloc(row * sizeof(int *));
+  for (i=0; i<row; i++){
+    board[i] = (int *) malloc(col * sizeof(int));
   }
 } 
 
@@ -71,7 +72,7 @@ void makeBoard(int r, int c, int **board){
 
 
 
-void populateBoard(int **board, char *buffer,  int row, int col){
+void populateBoard(char **board, char* buffer,  int row, int col){
   int i, j, count;
   count = 0;
   for (i = 0; i < row; i++){
@@ -90,7 +91,7 @@ void populateBoard(int **board, char *buffer,  int row, int col){
 
 
 
-void printBoard(int **board, int row, int col){
+void printBoard(char **board, int row, int col){
   int i, j;
   printf("The board contains:\n");
   for (i = 0; i < row; i++){
@@ -110,11 +111,11 @@ void printBoard(int **board, int row, int col){
  *      * return: 
  *       *   nothing 
  *        * * * * * * * * * * * * */
-void boardDimensions(int *r, int *c){
+void boardDimensions(int row, int col){
   printf ("\nHow many rows do you have?\n");
-  scanf("\n%d",r);
+  scanf("\n%d",row);
   printf("\nHow many columns do you have?\n");
-  scanf("\n%d",c);
+  scanf("\n%d",col);
  // printf("\nMakeBoard:\n");
 }
 
@@ -124,4 +125,55 @@ void printBuffer(char *buffer){
    for (i = 0; i < strlen(buffer); i++){
    printf("%c", buffer[i]);
    }
+}
+
+void saveFileTo(char *fileName){
+  printf("\nWhat file would you like to save to:\n");
+  printf("\nFile: ");
+  scanf("\n%s",fileName);
+
+}
+
+
+void userResponse(char *resp){
+  printf("\nWhat would you like to do next?\n");
+  printf("\nSave: s\n");
+  printf("\nLoad: l\n");
+  printf("\nContinue Once: c\n");
+  printf("\nContinue Multiple: n\n");
+  printf("\nQuit: q\n");
+  printf("\nYour response: ");
+  scanf("\n%s",resp);
+}
+
+void toStringBoard(char **board, char* stringBoard){
+
+}
+
+void freeMem(char ***board, int row, int col){
+
+}
+
+void makeCheck(int row, int col, int ***checkBoard){
+
+}
+
+void populateCheck(int row, int col, int **checkBoard){
+
+}
+
+void printCheckBoard(int **checkBoard, int row, int col){
+
+}
+
+void getNeighbors(char **board, int **checkBoard, int i, int j, int row, int col){
+
+}
+
+void getFileFromUser(char *fileName){
+
+}
+
+void getContNumFromUser(int *num){
+
 }
