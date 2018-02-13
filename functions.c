@@ -61,7 +61,7 @@ int write_file( char* filename, char *buffer, int size){
  *          * * * * * * * * * * * * */
 void makeBoard(int r, int c, int **board){
   int i, j, count;
-  **board = (int **) malloc(r * sizeof(int *));
+  *board = (int *) malloc(r * sizeof(int *));
   for (i=0; i<r; i++){
     board[i] = (int *) malloc(c * sizeof(int));
   }
@@ -80,5 +80,13 @@ void boardDimensions(int *r, int *c){
   scanf("\n%d",r);
   printf("\nHow many columns do you have?\n");
   scanf("\n%d",c);
-  printf("\nMakeBoard:\n");
+ // printf("\nMakeBoard:\n");
+}
+
+void printBuffer(char *buffer){
+   int i, j;
+   printf("The buffer contains: \n");
+   for (i = 0; i < strlen(buffer); i++){
+   printf("%c", buffer[i]);
+   }
 }
