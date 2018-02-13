@@ -18,6 +18,24 @@ int main(int argc, int** argv[]){
   printf("\nrow: %d\ncol: %d\n\n", row, col);  
   printBuffer(buffer);
   makeBoard(row, col, &board);  
-  
+ 
+
+  int i,j,count;
+  count = 0;
+  for(i=0; i<row; i++){
+    for (j = 0; j <= col; j++){
+     if(buffer[count] != 10){ // comparing ascii value of new lines to whats in our buffer
+       board[i][j] = buffer[count];
+       count++;
+     }
+     else{
+       count++;
+     }
+    }
+  }
+
+
+  // populateBoard(&board, buffer, row, col);
+ // printBoard(board, row, col);  
   return 0;
  }

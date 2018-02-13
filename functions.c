@@ -67,6 +67,41 @@ void makeBoard(int r, int c, int **board){
   }
 } 
 
+
+
+
+
+void populateBoard(int **board, char *buffer,  int row, int col){
+  int i, j, count;
+  count = 0;
+  for (i = 0; i < row; i++){
+    for (j = 0; j <= col; j++){
+      if(buffer[count] != 10){ // comparing ascii value of new lines to whats in our buffer
+        board[i][j] = buffer[count];
+        count++;
+      }
+      else{
+        count++;
+      }
+    }
+  }
+}
+
+
+
+
+void printBoard(int **board, int row, int col){
+  int i, j;
+  printf("The board contains:\n");
+  for (i = 0; i < row; i++){
+    for (j = 0; j < col; j++){
+      printf("%d", board[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+
 /* * * * * * * * * * * * 
  *  * user input for board size 
  *   * params: 
