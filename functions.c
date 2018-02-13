@@ -139,7 +139,7 @@ void userResponse(char *resp){
   printf("\nContinue Multiple: n\n");
   printf("\nQuit: q\n");
   printf("\nYour response: ");
-  scanf("\n%s",resp);
+  scanf("\n%c",resp);
 }
 
 void toStringBoard(char **board, char* stringBoard){

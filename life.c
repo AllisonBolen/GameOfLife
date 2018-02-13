@@ -7,7 +7,7 @@ int main(int argc, char** argv){
   char** board;
   char fileName;
   char stringBoard;
-  char saveFileName;
+ // char saveFileName;
   char** checkBoard;
  // printBuffer(buffer); 
   // start logic and populate and ize %d", temp);
@@ -25,28 +25,35 @@ int main(int argc, char** argv){
   printBoard(board, row, col);  
   
 //  int temp = size; 
-  printf("\nsize %d", size);
+  printf("\nsize %d\n", size);
 
  // printf("\nbuffer before save:\n%s",buffer);
 
-  userResponse(&response);
-  printf("\nResponse: %c\n",response);
- // char userArray = response;
+ // userResponse(&response);
+ // printf("\nResponse: %c\n",response);
 
-       printBoard(board, row, col);
-
- // printf("\nuserArray: %c\n", userArray);
-
+ // printBoard(board, row, col);
+  
+  char saveFileName[1000];
+  char temparray;
+  userResponse(&temparray);
+  response = temparray;
+  
   while(response != 'q'){
-          printBoard(board, row, col);
+  //  printBoard(board, row, col);
+  //  userResponse(&temparray);
+   // response = temparray;
+    printf("\nResponse: %c\n",response);
+    printf("\n Board just entering the loop\n");
+    printBoard(board, row, col);
 
     if(response == 'l'){
       free(buffer);
       freeMem(&board, row, col);
       
-      getFileFromUser(&saveFileName);
+    //  getFileFromUser(&saveFileName);
       
-      size = read_file(&saveFileName, &buffer);
+     // size = read_file(&saveFileName, &buffer);
       printBuffer(buffer);
       
       boardDimensions(&row, &col);
@@ -61,18 +68,34 @@ int main(int argc, char** argv){
     else if(response == 's'){
      // printf("\nsize %d", temp);
      // printf("\nbuffer before save:\n%s",buffer);
-       printBoard(board, row, col);
+      printf("\nboard just after entering s loop:\n");
+      printBoard(board, row, col);
      // strcpy(
+    
+     // printf("\nWhat file would you like to save to:\n");
+     // printf("\nFile: ");
+     // scanf("\n%s",saveFileName);
+
       saveFileTo(&saveFileName);
+      printf("\nsaveFileName: %s\n", saveFileName);
+
+     //  saveFileTo(&saveFileName);
+     // fileName = saveFileName;
       printf("\nsize %d", size);
      // printf("\nbuffer before save:\n%s",buffer);
 //      printBuffer(buffer);
-     // printBuffer(buffer);
-      printBoard(board, row, col);
-      write_file(&saveFileName, buffer, size);
+      printf("\nBuffer after goint into saveFileTo:\n");
       printBuffer(buffer);
+      printf("\nBoard after goint into saveFileTo:\n");
+      printBoard(board, row, col);
+      
+      write_file(&saveFileName, buffer, size);
+      printf("\nBuffer after goint into writeFile:\n");
+      printBuffer(buffer);
+      printf("\nBoard after goint into writeFile:\n");
       printBoard(board, row, col);
       // return 0;
+     // response = temparray;
     }
 
     else if(response == 'c'){
@@ -83,9 +106,13 @@ int main(int argc, char** argv){
 
     }
 
+    printf("\nbuffer at the end of loop:\n");
     printBuffer(buffer);
+    printf("\nboard at the end of the loop:\n");
     printBoard(board, row, col);
-    userResponse(&response);
+    
+    userResponse(&temparray);
+    response = temparray;
     printf("\nResponse: %c\n",response);
    // char userArray = response;
   }
