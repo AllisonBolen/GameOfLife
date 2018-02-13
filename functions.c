@@ -1,7 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 #include "functions.h"
 
 /* * * * * * * * * * * * 
@@ -60,11 +56,11 @@ int write_file( char* filename, char *buffer, int size){
  *        *   nothing
  *         * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
  *          * * * * * * * * * * * * */
-void makeBoard(int row, int col, int ***board){
-  int i, j, count;
-  *board = (int *) malloc(row * sizeof(int *));
+void makeBoard(int row, int col, char ***board){
+  int i, j;
+  *board = (char **) malloc(row * sizeof(char *));
   for (i=0; i<row; i++){
-    board[i] = (int *) malloc(col * sizeof(int));
+   (*board)[i] = (char *) malloc(col * sizeof(char));
   }
 } 
 
@@ -96,7 +92,7 @@ void printBoard(char **board, int row, int col){
   printf("The board contains:\n");
   for (i = 0; i < row; i++){
     for (j = 0; j < col; j++){
-      printf("%d", board[i][j]);
+      printf("%c", board[i][j]);
     }
     printf("\n");
   }
@@ -111,7 +107,7 @@ void printBoard(char **board, int row, int col){
  *      * return: 
  *       *   nothing 
  *        * * * * * * * * * * * * */
-void boardDimensions(int row, int col){
+void boardDimensions(int *row, int *col){
   printf ("\nHow many rows do you have?\n");
   scanf("\n%d",row);
   printf("\nHow many columns do you have?\n");

@@ -38,6 +38,6 @@ void getFileFromUser(char *fileName);//Get the user imput for th efile they woul
 
 void getContNumFromUser(int *num); //Get the number of continue iterations that the user would like to do.
 
-void boardDimensions(int row, int col);//Ask the user for board dimensions.
+void boardDimensions(int *row, int *col);//Ask the user for board dimensions.
 
 #endif
