@@ -6,7 +6,7 @@ int main(int argc, char** argv){
   char* buffer; 
   char** board;
   char fileName;
-  char stringBoard;
+  char* stringBoard;
  // char saveFileName;
   char** checkBoard;
  // printBuffer(buffer); 
@@ -23,7 +23,10 @@ int main(int argc, char** argv){
   makeBoard(row, col, &board);  
   populateBoard(board, buffer, row, col);
   printBoard(board, row, col);  
-  
+
+  toStringBoard(board, buffer, row, col);
+  printf("FFFFFFFFFFFFFFFFFFFFFFFFFFF");
+  printBuffer(buffer);
 //  int temp = size; 
   printf("\nsize %d\n", size);
 

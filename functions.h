@@ -22,7 +22,7 @@ void userResponse(char *resp); //grab the users response to what they would like
 
 void saveFileTo(char *fileName); // grab the user response to where the user would like to save the file to
 
-void toStringBoard(char **board, char* stringBoard);//grab everything in board and store it into stringBoard which is a 1D array of strings. 
+void toStringBoard(char **board, char* stringBoard, int row, int col);//grab everything in board and store it into stringBoard which is a 1D array of strings. 
 
 void freeMem(char **board, int row, int col);//free memory in the rows that were allocated then free the entire board.
 

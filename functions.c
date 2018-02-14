@@ -88,7 +88,7 @@ void printBoard(char **board, int row, int col){
     for (j = 0; j < col; j++){
       printf("%c", board[i][j]);
     }
-    printf("\n");
+   printf("\n");
   }
 }
 
@@ -123,7 +123,6 @@ void saveFileTo(char *fileName){
 
 }
 
-
 void userResponse(char *resp){
   printf("\nWhat would you like to do next?\n");
   printf("\nSave: s\n");
@@ -135,8 +134,21 @@ void userResponse(char *resp){
   scanf("\n%s",resp);
 }
 
-void toStringBoard(char **board, char* stringBoard){
-
+void toStringBoard(char **board, char* buffer, int row, int col){
+  int i, j, count;
+  count = 0;
+  for (i = 0; i < row; i++){
+    for (j = 0; j < col; j++){
+      if((count+1)%row==0 && (i!=row && j!=col)){
+        buffer[count]='\n';
+        count++;
+      }
+      else{
+        buffer[count]=board[i][j];
+        count++;
+      }
+    }
+  }
 }
 
 void freeMem(char **board, int row, int col){
