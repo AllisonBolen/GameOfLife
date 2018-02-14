@@ -65,9 +65,6 @@ void makeBoard(int row, int col, char ***board){
 } 
 
 
-
-
-
 void populateBoard(char **board, char* buffer,  int row, int col){
   int i, j, count;
   count = 0;
@@ -84,9 +81,6 @@ void populateBoard(char **board, char* buffer,  int row, int col){
   }
 }
 
-
-
-
 void printBoard(char **board, int row, int col){
   int i, j;
   printf("The board contains:\n");
@@ -97,7 +91,6 @@ void printBoard(char **board, int row, int col){
     printf("\n");
   }
 }
-
 
 /* * * * * * * * * * * * 
  *  * user input for board size 
