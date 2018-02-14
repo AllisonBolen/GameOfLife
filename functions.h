@@ -40,4 +40,5 @@ void getContNumFromUser(int *num); //Get the number of continue iterations that 
 
 void boardDimensions(int *row, int *col);//Ask the user for board dimensions.
 
+void calcNewBoard(char **board, int **checkBoard, int i, int j);//generate the next genration with this
 #endif

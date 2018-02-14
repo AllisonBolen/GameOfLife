@@ -54,6 +54,7 @@ int main(int argc, char** argv){
     else if(response == 's'){
      // printf("\nboard just after entering s loop:\n");
      // printBoard(board, row, col);
+     //toStringBoard(board, buffer, row, col);
       saveFileTo(saveFileName);
       printf("\nsaveFileName: %s\n", saveFileName);
 
@@ -77,6 +78,14 @@ int main(int argc, char** argv){
           getNeighbors(board, checkBoard, n, m, row, col);
         }
       }
+      printBoard(board, row, col);
+      printCheckBoard(checkBoard, row, col);
+      for(n = 0; n < row; n++){
+        for(m = 0; m < col; m++){
+          calcNewBoard(board, checkBoard, n, m);
+        }
+      }
+      printBoard(board, row, col);
       printCheckBoard(checkBoard, row, col);
     }
 

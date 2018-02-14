@@ -139,7 +139,7 @@ void toStringBoard(char **board, char* buffer, int row, int col){
   count = 0;
   for (i = 0; i < row; i++){
     for (j = 0; j < col; j++){
-      if((count+1)%row==0 && (i!=row && j!=col)){
+     if((count+1)%row==0 && (i!=row && j!=col)){
         buffer[count]='\n';
         count++;
       }
@@ -218,3 +218,21 @@ void getContNumFromUser(int *num){
 
 }
 
+void calcNewBoard(char **board, int **checkBoard, int i, int j){
+  
+  if(board[i][j]=='1' && checkBoard[i][j] < 2){ //overcrowding
+    board[i][j]='2';
+  }
+  else if(board[i][j]=='1' && checkBoard[i][j] > 3){
+    board[i][j]='2';
+  }
+  else if(board[i][j] =='1' && (checkBoard[i][j] == 2 || checkBoard[i][j] == 3)){
+    board[i][j]='1';
+  }
+  else if(board[i][j]=='2' && checkBoard[i][j]==3){
+    board[i][j]='1';
+  }
+  else if(board[i][j]=='0' && checkBoard[i][j]==3){
+    board[i][j]='1';
+  }
+}
