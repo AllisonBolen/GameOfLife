@@ -50,7 +50,7 @@ int main(int argc, char** argv){
 
     if(response == 'l'){
       free(buffer);
-      freeMem(&board, row, col);
+      freeMem(board, row, col);
       
       getFileFromUser(saveFileName);
       

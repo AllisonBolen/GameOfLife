@@ -24,7 +24,7 @@ void saveFileTo(char *fileName); // grab the user response to where the user wou
 
 void toStringBoard(char **board, char* stringBoard);//grab everything in board and store it into stringBoard which is a 1D array of strings. 
 
-void freeMem(char ***board, int row, int col);//free memory in the rows that were allocated then free the entire board.
+void freeMem(char **board, int row, int col);//free memory in the rows that were allocated then free the entire board.
 
 void makeCheck(int row, int col, int ***checkBoard);//allocate memory for the board that calculates neighbors
 

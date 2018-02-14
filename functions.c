@@ -146,15 +146,15 @@ void toStringBoard(char **board, char* stringBoard){
 
 }
 
-void freeMem(char ***board, int row, int col){
+void freeMem(char **board, int row, int col){
   int i;
   for (i = 0; i < row; i++){
     printf("1st free:\n");
    // printf("%s\n", *board[i]);
-    free((*board)[i]);
+    free(board[i]);
   }
   printf("final free:\n");
-  free(**board);
+  free(board);
 }
 
 void makeCheck(int row, int col, int ***checkBoard){
