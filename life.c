@@ -35,6 +35,7 @@ int main(int argc, char** argv){
  // printBoard(board, row, col);
   
   char saveFileName[1000];
+ // char tempfile = saveFileName;
   char temparray;
   userResponse(&temparray);
   response = temparray;
@@ -51,9 +52,9 @@ int main(int argc, char** argv){
       free(buffer);
       freeMem(&board, row, col);
       
-    //  getFileFromUser(&saveFileName);
+      getFileFromUser(saveFileName);
       
-     // size = read_file(&saveFileName, &buffer);
+      size = read_file(saveFileName, &buffer);
       printBuffer(buffer);
       
       boardDimensions(&row, &col);
@@ -76,8 +77,13 @@ int main(int argc, char** argv){
      // printf("\nFile: ");
      // scanf("\n%s",saveFileName);
 
-      saveFileTo(&saveFileName);
+     // saveFileTo(&saveFileName);
+     // char temp;
+      saveFileTo(saveFileName);
+     // tempfile = saveFileName;
       printf("\nsaveFileName: %s\n", saveFileName);
+
+      //printf("\nsaveFileName: %s\n", saveFileName);
 
      //  saveFileTo(&saveFileName);
      // fileName = saveFileName;
@@ -89,7 +95,8 @@ int main(int argc, char** argv){
       printf("\nBoard after goint into saveFileTo:\n");
       printBoard(board, row, col);
       
-      write_file(&saveFileName, buffer, size);
+      write_file(saveFileName, buffer, size);
+    //  write_file(&temp, buffer, size);
       printf("\nBuffer after goint into writeFile:\n");
       printBuffer(buffer);
       printf("\nBoard after goint into writeFile:\n");
