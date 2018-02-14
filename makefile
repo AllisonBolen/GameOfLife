@@ -1,3 +1,3 @@
 all:
 	gcc *.c -o game 
-	./game input.txt
+	./game check.txt

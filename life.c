@@ -71,7 +71,13 @@ int main(int argc, char** argv){
     }
 
     else if(response == 'c'){
-
+      int n, m;
+      for(n = 0; n < row; n++){
+        for(m = 0; m < col; m++){
+          getNeighbors(board, checkBoard, n, m, row, col);
+        }
+      }
+      printCheckBoard(checkBoard, row, col);
     }
 
     else if(response == 'n'){

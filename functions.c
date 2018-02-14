@@ -191,7 +191,21 @@ void printCheckBoard(int **checkBoard, int row, int col){
 }
 
 void getNeighbors(char **board, int **checkBoard, int i, int j, int row, int col){
-
+  int n, m;
+  for(n = i - 1; n <= i+1; n++){
+    for(m = j - 1; m <= j+1; m++){
+       if(n > -1 &&  m > -1 && n < row  && m < col){
+        if( n == i && m == j){
+          }
+         else if(board[n][m]  == '1'){      
+          checkBoard[j][i]++;
+        }
+      }
+    }
+  }
+  //if(board[i][j]==1){
+   // checkBoard[i][j]--;
+ // } 
 }
 
 void getFileFromUser(char *fileName){
@@ -203,3 +217,4 @@ void getFileFromUser(char *fileName){
 void getContNumFromUser(int *num){
 
 }
+
