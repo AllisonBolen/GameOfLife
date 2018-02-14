@@ -163,15 +163,31 @@ void freeMem(char **board, int row, int col){
 }
 
 void makeCheck(int row, int col, int ***checkBoard){
-
+  int i, j;
+  *checkBoard = (int **) malloc(row * sizeof(int *));
+  for (i=0; i<row; i++){
+   (*checkBoard)[i] = (int *) malloc(col * sizeof(int));
+  }
 }
 
 void populateCheck(int row, int col, int **checkBoard){
-
+  int i, j;
+  for(i = 0; i < row; i++){
+    for(j = 0;j < col; j++){
+      checkBoard[i][j]=0;
+    }
+  }
 }
 
 void printCheckBoard(int **checkBoard, int row, int col){
-
+  int i, j;
+  printf("The board contains:\n");
+  for (i = 0; i < row; i++){
+    for (j = 0; j < col; j++){
+      printf("%c", checkBoard[i][j]);
+    }
+   printf("\n");
+  }
 }
 
 void getNeighbors(char **board, int **checkBoard, int i, int j, int row, int col){
