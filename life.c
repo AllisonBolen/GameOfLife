@@ -1,5 +1,12 @@
 #include "functions.h"
 
+/* * * * * * * * * * * * 
+* Play Conways Game of life.
+* version: feb.14.2018
+* authors: 
+* Allison Bolen
+* Jackson Glynn
+* * * * * * * * * * * */
 int main(int argc, char** argv){
   /** The row and column of the board **/
   int row, col;
