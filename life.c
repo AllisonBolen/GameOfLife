@@ -94,7 +94,7 @@ int main(int argc, char** argv){
             calcNewBoard(board, checkBoard, c, d);
 	  }
         }  
-	      
+	printf("\nGeneration: #%d\n",(x+1));      
         printBoard(board, row, col);
 	      
       }
