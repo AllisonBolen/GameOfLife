@@ -1,13 +1,13 @@
 #include "functions.h"
 
 /* * * * * * * * * * * * 
- *  * read file
- *   * params: 
- *    *   filename - name of file to read from
- *     *   buffer - id arrray to read contents into
- *      * return: 
- *       *   the size of the file read in, warning: includes the '\n' line bytes 
- *        * * * * * * * * * * * * */
+ * read file
+ * params: 
+ *   filename - name of file to read from
+ *   buffer - id arrray to read contents into
+ * return: 
+ *   the size of the file read in, warning: includes the '\n' line bytes 
+ * * * * * * * * * * * * */
 int read_file( char* filename, char **buffer ){
   FILE* in = fopen(filename, "r");
 
@@ -24,19 +24,18 @@ int read_file( char* filename, char **buffer ){
     fread(*buffer,sz,1,in);
     fclose(in);
     return sz;
-   }
- // return 0; 
+   } 
  }
 
 /* * * * * * * * * * * *
- *  * write file
- *   * params:
- *    *   filename - name of file to read from
- *     *   buffer - id arrray to read contents into
- *      *   size -  the size to loop to for the file to be read completely
- *       * return:
- *        *   an int but why?
- *         * * * * * * * * * * * * * */
+ * write file
+ * params:
+ *   filename - name of file to read from
+ *   buffer - id arrray to read contents into
+ *   size -  the size to loop to for the file to be read completely
+ * return:
+ *   an int but why?
+ * * * * * * * * * * * * * */
 int write_file( char* filename, char *buffer, int size){
   FILE* out = fopen(filename, "w");
   fwrite(buffer, sizeof(char), size, out);
@@ -47,15 +46,15 @@ int write_file( char* filename, char *buffer, int size){
 
 /* * * * * * * * * * * *
  * allocate the board space
- *  * params:
- *   *   c - number of cols
- *    *   r - number of rows
- *     *   buffer - id arrray to read contents into
- *      *   board - the 2d array to store teh chars in
- *       * return:
- *        *   nothing
- *         * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
- *          * * * * * * * * * * * * */
+ * params:
+ *   c - number of cols
+ *   r - number of rows
+ *   buffer - id arrray to read contents into
+ *   board - the 2d array to store teh chars in
+ * return:
+ *   nothing
+ * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
+ * * * * * * * * * * * * */
 void makeBoard(int row, int col, char ***board){
   int i, j;
   *board = (char **) malloc(row * sizeof(char *));
@@ -93,19 +92,18 @@ void printBoard(char **board, int row, int col){
 }
 
 /* * * * * * * * * * * * 
- *  * user input for board size 
- *   * params: 
- *    *   r - num of rows
- *     *   c - num of cols
- *      * return: 
- *       *   nothing 
- *        * * * * * * * * * * * * */
+ * user input for board size 
+ * params: 
+ *   r - num of rows
+ *   c - num of cols
+ * return: 
+ *   nothing 
+ * * * * * * * * * * * * */
 void boardDimensions(int *row, int *col){
   printf ("\nHow many rows do you have?\n");
   scanf("\n%d",row);
   printf("\nHow many columns do you have?\n");
   scanf("\n%d",col);
- // printf("\nMakeBoard:\n");
 }
 
 void printBuffer(char *buffer){
@@ -155,11 +153,8 @@ void toStringBoard(char **board, char *buffer, int row, int col){
 void freeMem(char **board, int row, int col){
   int i;
   for (i = 0; i < row; i++){
-    printf("1st free:\n");
-   // printf("%s\n", *board[i]);
     free(board[i]);
   }
-  printf("final free:\n");
   free(board);
 }
 
@@ -204,9 +199,6 @@ void getNeighbors(char **board, int **checkBoard, int i, int j, int row, int col
       }
     }
   }
-  //if(board[i][j]==1){
-   // checkBoard[i][j]--;
- // } 
 }
 
 void getFileFromUser(char *fileName){
@@ -222,7 +214,6 @@ void getContNumFromUser(int *num){
 }
 
 void calcNewBoard(char **board, int **checkBoard, int i, int j){
-  
   if(board[i][j]=='1' && checkBoard[i][j] < 2){ //overcrowding
     board[i][j]='2';
   }
