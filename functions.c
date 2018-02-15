@@ -134,21 +134,22 @@ void userResponse(char *resp){
   scanf("\n%s",resp);
 }
 
-void toStringBoard(char **board, char* buffer, int row, int col){
+void toStringBoard(char **board, char *buffer, int row, int col){
   int i, j, count;
   count = 0;
   for (i = 0; i < row; i++){
-    for (j = 0; j < col; j++){
-     if((count+1)%row==0 && (i!=row && j!=col)){
+    for (j = 0; j <= col; j++){
+      if(j == col){
         buffer[count]='\n';
         count++;
       }
       else{
-        buffer[count]=board[i][j];
+       buffer[count]=board[i][j];
         count++;
       }
     }
   }
+  buffer[count] = '\0';
 }
 
 void freeMem(char **board, int row, int col){

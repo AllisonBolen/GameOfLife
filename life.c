@@ -63,7 +63,12 @@ int main(int argc, char** argv){
      // printBuffer(buffer);
      // printf("\nBoard after goint into saveFileTo:\n");
      // printBoard(board, row, col);
+      printf("buffer before toString:");
+      printBuffer(buffer);
+     // free(buffer);
       toStringBoard(board, buffer, row, col);
+      printf("buffer after toString:");
+      printBuffer(buffer);
       write_file(saveFileName, buffer, size);
      // printf("\nBuffer after goint into writeFile:\n");
      // printBuffer(buffer);
@@ -93,11 +98,15 @@ int main(int argc, char** argv){
 
     }
 
-    printf("\nbuffer at the end of loop:\n");
-    printBuffer(buffer);
+//    printf("\nbuffer at the end of loop:\n");
+  //  printBuffer(buffer);
     printf("\nboard at the end of the loop:\n");
     printBoard(board, row, col);
-    
+   
+    toStringBoard(board, buffer, row, col);
+    printf("\nbuffer tostring at the end of loop:\n");
+    printBuffer(buffer);
+
     userResponse(&temparray);
     response = temparray;
     printf("\nResponse: %c\n",response);
