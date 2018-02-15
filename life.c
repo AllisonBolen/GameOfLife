@@ -11,6 +11,9 @@ int main(int argc, char** argv){
   
   int size = read_file((char*)argv[1], &buffer); 
 
+  char saveFileName[1000];
+  char temparray;
+  
   boardDimensions(&row, &col);
 	
   makeBoard(row, col, &board);  
@@ -20,11 +23,7 @@ int main(int argc, char** argv){
   makeCheck(row, col, &checkBoard);
   populateCheck(row, col, checkBoard);
   printCheckBoard(checkBoard, row, col);
-  
-  
-  char saveFileName[1000];
-  char temparray;
-	
+       	
   userResponse(&temparray);
   response = temparray;
   
