@@ -8,12 +8,11 @@ int main(int argc, char** argv){
   char fileName;
   char* stringBoard;
   int** checkBoard;
-  printf("\nfileName: %s", argv[1]);
-  int size = read_file((char*)argv[1], &buffer);
-  printf("\nsize: %d\n",size); 
+  
+  int size = read_file((char*)argv[1], &buffer); 
 
   boardDimensions(&row, &col);
-  printf("\nrow: %d\ncol: %d\n\n", row, col);  
+	
   makeBoard(row, col, &board);  
   populateBoard(board, buffer, row, col);
   printBoard(board, row, col);  
@@ -21,122 +20,97 @@ int main(int argc, char** argv){
   makeCheck(row, col, &checkBoard);
   populateCheck(row, col, checkBoard);
   printCheckBoard(checkBoard, row, col);
-  //printf("\nsize %d\n", size);
+  
   
   char saveFileName[1000];
   char temparray;
+	
   userResponse(&temparray);
   response = temparray;
   
   while(response != 'q'){
     printf("\nResponse: %c\n",response);
-    printf("\n Board just entering the loop\n");
     printBoard(board, row, col);
-
+	  
     if(response == 'l'){
       free(buffer);
       freeMem(board, row, col);
-      
+	    
       getFileFromUser(saveFileName);
-      
       size = read_file(saveFileName, &buffer);
-     // printBuffer(buffer);
       
       boardDimensions(&row, &col);
-      printf("\nrow: %d\ncol: %d\n\n", row, col);
       
       makeBoard(row, col, &board);
       populateBoard(board, buffer, row, col);
       printBoard(board, row, col);
     
     }
-    
+	  
     else if(response == 's'){
-     // printf("\nboard just after entering s loop:\n");
-     // printBoard(board, row, col);
-     //toStringBoard(board, buffer, row, col);
       saveFileTo(saveFileName);
-      printf("\nsaveFileName: %s\n", saveFileName);
-
-     // printf("\nsize %d", size);
-     // printf("\nBuffer after goint into saveFileTo:\n");
-     // printBuffer(buffer);
-     // printf("\nBoard after goint into saveFileTo:\n");
-     // printBoard(board, row, col);
-      printf("buffer before toString:");
-      printBuffer(buffer);
-     // free(buffer);
+	    
       toStringBoard(board, buffer, row, col);
-      printf("buffer after toString:");
-      printBuffer(buffer);
       size = strlen(buffer);
+	    
       write_file(saveFileName, buffer, size);
-     // printf("\nBuffer after goint into writeFile:\n");
-     // printBuffer(buffer);
-     // printf("\nBoard after goint into writeFile:\n");
-     //  printBoard(board, row, col);
+    
     }
-
+	  
     else if(response == 'c'){
       int n, m;
+	    
       for(n = 0; n < row; n++){
         for(m = 0; m < col; m++){
           getNeighbors(board, checkBoard, n, m, row, col);
         }
       }
-      printBoard(board, row, col);
-      printCheckBoard(checkBoard, row, col);
+	    
       for(n = 0; n < row; n++){
         for(m = 0; m < col; m++){
           calcNewBoard(board, checkBoard, n, m);
         }
       }
+	    
       printBoard(board, row, col);
-      printCheckBoard(checkBoard, row, col);
+	    
     }
-
+	  
     else if(response == 'n'){
       int nums, x, a, b, c, d; 
       getContNumFromUser(&nums);
-      printf("\nnums: %d", nums);
+	    
       for(x = 0; x < nums; x++ ){
 	populateCheck(row,col, checkBoard);
+	      
         for(a = 0; a < row; a++){
           for(b = 0; b < col; b++){
             getNeighbors(board, checkBoard, a, b, row, col);
-	    printf("\nin the first loop:\n");	
-	    printBoard(board, row, col);
-	    printCheckBoard(checkBoard, row, col);
-
 	  }
         }
+	      
         for(c = 0; c < row; c++){
           for(d = 0; d < col; d++){
             calcNewBoard(board, checkBoard, c, d);
-            printf("\nin the second loop:\n");   
-	    printBoard(board, row, col);
-	    printCheckBoard(checkBoard, row, col);
 	  }
         }  
+	      
+        printBoard(board, row, col);
+	      
       }
     }
-
-//    printf("\nbuffer at the end of loop:\n");
-  //  printBuffer(buffer);
-    printf("\nboard at the end of the loop:\n");
+	  
     printBoard(board, row, col);
-   
     toStringBoard(board, buffer, row, col);
-    printf("\nbuffer tostring at the end of loop:\n");
-    printBuffer(buffer);
-
+	  
     userResponse(&temparray);
     response = temparray;
     printf("\nResponse: %c\n",response);
+  
   }
-  // out of loop
+	
   free(buffer);
   freeMem(board, row, col);
-  //freemem(checkBoard, row, col);
   return 0;
- }
+ 
+}
