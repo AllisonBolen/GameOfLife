@@ -47,10 +47,10 @@ int write_file( char* filename, char *buffer, int size){
 /* * * * * * * * * * * *
  * allocate the board space
  * params:
- *   c - number of cols
- *   r - number of rows
+ *   col - number of cols
+ *   row - number of rows
  *   buffer - id arrray to read contents into
- *   board - the 2d array to store teh chars in
+ *   board - the 2d array to store the chars in
  * return:
  *   nothing
  * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
@@ -63,7 +63,17 @@ void makeBoard(int row, int col, char ***board){
   }
 } 
 
-
+/* * * * * * * * * * * *
+ * populate the board with teh data read in form the file to the the buffer. 
+ * By reading from buffer we get teh file data
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   buffer - id arrray to read contents into
+ *   board - the 2d array to store the chars in
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void populateBoard(char **board, char* buffer,  int row, int col){
   int i, j, count;
   count = 0;
@@ -80,6 +90,15 @@ void populateBoard(char **board, char* buffer,  int row, int col){
   }
 }
 
+/* * * * * * * * * * * *
+ * Print the contents of the board 
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   board - the 2d array to store teh chars in
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void printBoard(char **board, int row, int col){
   int i, j;
   printf("The board contains:\n");
@@ -95,8 +114,8 @@ void printBoard(char **board, int row, int col){
 /* * * * * * * * * * * * 
  * user input for board size 
  * params: 
- *   r - num of rows
- *   c - num of cols
+ *   row - num of rows
+ *   col - num of cols
  * return: 
  *   nothing 
  * * * * * * * * * * * * */
@@ -107,6 +126,15 @@ void boardDimensions(int *row, int *col){
   scanf("\n%d",col);
 }
 
+/* * * * * * * * * * * *
+ * Print the contents of the buffer. used for testing.
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   buffer - the 1d array to store the chars in from the file
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void printBuffer(char *buffer){
    int i, j;
    printf("The buffer contains: \n");
@@ -115,6 +143,13 @@ void printBuffer(char *buffer){
    }
 }
 
+/* * * * * * * * * * * *
+ * Ask user for file name to save to  
+ * params:
+ *   filename - the name of the file to save to 
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void saveFileTo(char *fileName){
   printf("\nWhat file would you like to save to:\n");
   printf("\nFile: ");
@@ -122,6 +157,13 @@ void saveFileTo(char *fileName){
 
 }
 
+/* * * * * * * * * * * *
+ * Ask user for what they would like to do next  
+ * params:
+ *   resp - maps back to main response vriable, the char for what action to preform next
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void userResponse(char *resp){
   printf("\nWhat would you like to do next?\n");
   printf("\nSave: s\n");
@@ -133,6 +175,16 @@ void userResponse(char *resp){
   scanf("\n%s",resp);
 }
 
+/* * * * * * * * * * * *
+ * Parsing the contents of the 2d array of board to a 1d array of buffer to prep buffer to write to a file.  
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   buffer - id array to read contents into
+ *   board - the 2d array to take the chars from
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void toStringBoard(char **board, char *buffer, int row, int col){
   int i, j, count;
   count = 0;
@@ -151,6 +203,15 @@ void toStringBoard(char **board, char *buffer, int row, int col){
   buffer[count] = '\0';
 }
 
+/* * * * * * * * * * * *
+ * free the memory of the board in reverse order in which we saved it as  
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   board - the 2d array of chars to free
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void freeMem(char **board, int row, int col){
   int i;
   for (i = 0; i < row; i++){
@@ -159,6 +220,15 @@ void freeMem(char **board, int row, int col){
   free(board);
 }
 
+/* * * * * * * * * * * *
+ * free the memory of the checkBoard in reverse order in which we saved it as  
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   checkBoard - the 2d array of ints to free
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void freeMemCheck(int **checkBoard, int row, int col){
   int i;
   for (i = 0; i < row; i++){
@@ -167,6 +237,16 @@ void freeMemCheck(int **checkBoard, int row, int col){
   free(checkBoard);
 }
 
+/* * * * * * * * * * * *
+ * allocate the checkBoard space
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   checkBoard - the 2d array to store the ints in
+ * return:
+ *   nothing
+ * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
+ * * * * * * * * * * * * */
 void makeCheck(int row, int col, int ***checkBoard){
   int i, j;
   *checkBoard = (int **) malloc(row * sizeof(int *));
@@ -175,6 +255,15 @@ void makeCheck(int row, int col, int ***checkBoard){
   }
 }
 
+/* * * * * * * * * * * *
+ * populate the checkBoard to all zeros for easy incrementation
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   checkBoard - the 2d array to store the ints in
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void populateCheck(int row, int col, int **checkBoard){
   int i, j;
   for(i = 0; i < row; i++){
@@ -184,6 +273,15 @@ void populateCheck(int row, int col, int **checkBoard){
   }
 }
 
+/* * * * * * * * * * * *
+ * Print the checkBoard. Used in testing.
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   checkboard - the 2d array to read from
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void printCheckBoard(int **checkBoard, int row, int col){
   int i, j;
   printf("The check board contains:\n");
@@ -195,6 +293,19 @@ void printCheckBoard(int **checkBoard, int row, int col){
   }
 }
 
+/* * * * * * * * * * * *
+ * checks all the spaces around one cell with out going out of bounds 
+ * and increments the cell at the cntral location depdnding on how many 1s surround it.
+ * params:
+ *   col - number of cols
+ *   row - number of rows
+ *   i - the row location of the current cell on the board
+ *   j - the col location of each cell on the board
+ *   checkBoard - 2d arrray to increment
+ *   board - the 2d array to ana;yze and determine hieghbor count from
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void getNeighbors(char **board, int **checkBoard, int i, int j, int row, int col){
   int n, m;
   for(n = i - 1; n <= i+1; n++){
@@ -210,20 +321,46 @@ void getNeighbors(char **board, int **checkBoard, int i, int j, int row, int col
   }
 }
 
+/* * * * * * * * * * * *
+ * get the file the user wants to load from 
+ * params:
+ *  filename - name of file from user
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void getFileFromUser(char *fileName){
   printf("\nWhat file would you like to load from:\n");
   printf("\nFile: ");
   scanf("\n%s", fileName);
 }
 
+/* * * * * * * * * * * *
+ * get the number of gens the user wants to loop through
+ * params:
+ *   num - number of gens to calculate by users choice
+ * return:
+ *   nothing
+ * * * * * * * * * * * * */
 void getContNumFromUser(int *num){
   printf("\nHow many generations would you like to run.\n");
   printf("\nNumber: ");
   scanf("\n%d",num);
 }
 
+/* * * * * * * * * * * *
+ * analyze the current board and the checkBoard at each spot one by one called 
+ * from main and see what its new state should be based off of how many nieghbors it has around it
+ * params:
+ *   i - the row location of the current cell on the board
+ *   j - the col location of each cell on the board
+ *   board - 2d arrray to read contents into
+ *   checkBoard - the 2d array compare with board
+ * return:
+ *   nothing
+ * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
+ * * * * * * * * * * * * */
 void calcNewBoard(char **board, int **checkBoard, int i, int j){
-  if(board[i][j]=='1' && checkBoard[i][j] < 2){ //overcrowding
+  if(board[i][j]=='1' && checkBoard[i][j] < 2){ 
     board[i][j]='2';
   }
   else if(board[i][j]=='1' && checkBoard[i][j] > 3){
