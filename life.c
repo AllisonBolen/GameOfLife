@@ -69,6 +69,7 @@ int main(int argc, char** argv){
       toStringBoard(board, buffer, row, col);
       printf("buffer after toString:");
       printBuffer(buffer);
+      size = strlen(buffer);
       write_file(saveFileName, buffer, size);
      // printf("\nBuffer after goint into writeFile:\n");
      // printBuffer(buffer);
@@ -97,16 +98,25 @@ int main(int argc, char** argv){
     else if(response == 'n'){
       int nums, x, a, b, c, d; 
       getContNumFromUser(&nums);
+      printf("\nnums: %d", nums);
       for(x = 0; x < nums; x++ ){
+	populateCheck(row,col, checkBoard);
         for(a = 0; a < row; a++){
           for(b = 0; b < col; b++){
             getNeighbors(board, checkBoard, a, b, row, col);
-          }
+	    printf("\nin the first loop:\n");	
+	    printBoard(board, row, col);
+	    printCheckBoard(checkBoard, row, col);
+
+	  }
         }
         for(c = 0; c < row; c++){
           for(d = 0; d < col; d++){
             calcNewBoard(board, checkBoard, c, d);
-          }
+            printf("\nin the second loop:\n");   
+	    printBoard(board, row, col);
+	    printCheckBoard(checkBoard, row, col);
+	  }
         }  
       }
     }
