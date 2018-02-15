@@ -111,6 +111,7 @@ int main(int argc, char** argv){
 	
   free(buffer);
   freeMem(board, row, col);
+  freeMemCheck(checkBoard, row, col);	
   return 0;
  
 }
