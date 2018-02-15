@@ -216,7 +216,9 @@ void getFileFromUser(char *fileName){
 }
 
 void getContNumFromUser(int *num){
-
+  printf("\nHow many generations would you like to run.\n");
+  printf("\nNumber: ");
+  scanf("\n%d",num);
 }
 
 void calcNewBoard(char **board, int **checkBoard, int i, int j){

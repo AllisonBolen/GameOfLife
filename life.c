@@ -95,7 +95,20 @@ int main(int argc, char** argv){
     }
 
     else if(response == 'n'){
-
+      int nums, x, a, b, c, d; 
+      getContNumFromUser(&nums);
+      for(x = 0; x < nums; x++ ){
+        for(a = 0; a < row; a++){
+          for(b = 0; b < col; b++){
+            getNeighbors(board, checkBoard, a, b, row, col);
+          }
+        }
+        for(c = 0; c < row; c++){
+          for(d = 0; d < col; d++){
+            calcNewBoard(board, checkBoard, c, d);
+          }
+        }  
+      }
     }
 
 //    printf("\nbuffer at the end of loop:\n");
