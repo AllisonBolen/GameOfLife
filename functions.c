@@ -158,6 +158,14 @@ void freeMem(char **board, int row, int col){
   free(board);
 }
 
+void freeMemCheck(int **checkBoard, int row, int col){
+  int i;
+  for (i = 0; i < row; i++){
+    free(checkBoard[i]);
+  }
+  free(checkBoard);
+}
+
 void makeCheck(int row, int col, int ***checkBoard){
   int i, j;
   *checkBoard = (int **) malloc(row * sizeof(int *));
