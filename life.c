@@ -87,7 +87,9 @@ int main(int argc, char** argv){
     //Executes if the user would like to continue one itteration of the game
     else if(response == 'c'){
       int n, m; //variables that we use for our for loops
-	    
+
+      populateCheck(row,col, checkBoard); //populates the checkBoard to be able to write later on
+
       //Loops through the board to find the cells neighbors and adds it to the cell of the checkBoard
       for(n = 0; n < row; n++){
         for(m = 0; m < col; m++){
