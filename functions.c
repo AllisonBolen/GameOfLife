@@ -6,7 +6,9 @@
  *   filename - name of file to read from
  *   buffer - id arrray to read contents into
  * return: 
- *   the size of the file read in, warning: includes the '\n' line bytes 
+ *   the size of the file read in, warning: includes the '\n' line bytes
+ * source: 
+ *   https://stackoverflow.com/questions/3463426/in-c-how-should-i-read-a-text-file *   -and-print-all-strings 
  * * * * * * * * * * * * */
 int read_file( char* filename, char **buffer ){
   FILE* in = fopen(filename, "r");
@@ -357,7 +359,6 @@ void getContNumFromUser(int *num){
  *   checkBoard - the 2d array compare with board
  * return:
  *   nothing
- * source: https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
  * * * * * * * * * * * * */
 void calcNewBoard(char **board, int **checkBoard, int i, int j){
   if(board[i][j]=='1' && checkBoard[i][j] < 2){ 
