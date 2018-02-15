@@ -89,6 +89,7 @@ void printBoard(char **board, int row, int col){
     }
    printf("\n");
   }
+  printf("\n");
 }
 
 /* * * * * * * * * * * * 
